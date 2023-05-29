@@ -42,7 +42,7 @@ mongoose
   })
   .then(() => {
     // Connection successful
-    app.listen(process.env.PORT || 8080);
+    app.listen(8080);
     console.log("Connected to MongoDB Atlas");
   })
   .catch((error) => {
