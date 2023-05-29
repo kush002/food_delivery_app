@@ -35,9 +35,7 @@ app.use("/error", (error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    `mongodb+srv://${process.env.DATA}@cluster0.9xk68hr.mongodb.net/food_delivery_app?retryWrites=true&w=majority`
-  )
+  .connect(process.env.DATA)
   .then((result) => {
     app.listen(process.env.PORT);
   })
