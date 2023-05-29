@@ -1,0 +1,120 @@
+.button {
+  background-color: #fbffdc;
+  color: #002e3f;
+  margin: 0 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #fbffdc;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+}
+.button a {
+  color: #002e3f;
+  display: flex;
+  align-items: center;
+
+  padding: 0.3rem;
+}
+
+.button a:hover,
+.button a.active {
+  color: #fbffdc;
+  background-color: #002e3f;
+  border-radius: 10px;
+}
+
+.icon {
+  margin-right: 0.3rem;
+}
+
+.icon:hover {
+  /* background-color: #002e3f; */
+  color: #fbffdc;
+}
+
+.button:hover {
+  color: #fbffdc;
+  transform: scale(1.1);
+  transition: all 1s;
+  /* padding: 0.3rem; */
+
+  border: 1px solid #fbffdc;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+}
+
+.accountButton {
+  padding: 1rem 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: inherit;
+}
+
+.accountButtonNav:hover,
+.accountButton a.active {
+  transform: scale(1.2);
+  transition: all 1s;
+}
+
+.dropDown {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  top: 90%;
+  left: 10%;
+  background-color: #fbffdc;
+  color: #002e3f;
+  width: 120px;
+  height: auto;
+
+  /* border: 1px solid #fbffdc; */
+  /* background: #fbffdc; */
+  border-radius: 8px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+  /* padding: 0.3rem 0; */
+}
+.btn {
+  border-radius: 8px;
+}
+.dropDown a,
+.btn {
+  border-radius: 2px;
+  text-align: left;
+  color: #002e3f;
+  /* margin: 0.3rem 0; */
+  width: 100%;
+  font-weight: bold;
+  margin: 0;
+  padding: 0.3rem 1rem;
+  border: none;
+  /* border-bottom-radius: 8px; */
+  /* border-top-right-radius: 8px; */
+}
+.dropDown a:first-of-type {
+  border-bottom: 2px solid #002e3f;
+}
+
+.dropDown a:hover,
+.btn:hover {
+  color: #fbffdc;
+  background-color: #002e3f;
+  transition: none;
+  transform: none;
+}
+.badge {
+  background-color: #002e3f;
+  color: #fbffdc;
+  padding: 0 0.25rem;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.button:hover .badge,
+.button a.active .badge {
+  background-color: #fbffdc;
+  color: #002e3f;
+
+  transition: all 1s;
+}

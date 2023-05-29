@@ -1,0 +1,15 @@
+.showIcon {
+  display: none;
+}
+
+.showIcon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: ease-out 0.2s;
+}
+
+@media screen and (max-width: 921px) {
+  .showIcon {
+    display: block;
+  }
+}

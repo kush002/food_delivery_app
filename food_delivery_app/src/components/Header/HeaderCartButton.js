@@ -1,0 +1,62 @@
+import classes from "./HeaderCartButton.module.css";
+import { useState } from "react";
+import { NavLink, Link, Form } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartShopping,
+  faCircleUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+const HeaderCartButton = (props) => {
+  const [toggle, setToggle] = useState(false);
+  const qty = useSelector((state) => state.cart.totalQuantity);
+
+  const showOptionHandler = () => {
+    setToggle(true);
+  };
+  const hideOptionHandler = () => {
+    setToggle(false);
+  };
+
+  return (
+    <Form action="/logout" method="post" className={props.className}>
+      <div className={classes.button}>
+        <NavLink
+          className={({ isActive }) => (isActive ? classes.active : "")}
+          to="/orders"
+        >
+          <span className={classes.icon}>
+            <FontAwesomeIcon icon={faCartShopping} />
+          </span>{" "}
+          <span>Your Cart</span>
+          <span className={classes.badge}>{qty}</span>
+        </NavLink>
+      </div>
+      <div
+        className={classes.accountButton}
+        onMouseOver={showOptionHandler}
+        onMouseLeave={hideOptionHandler}
+      >
+        <NavLink
+          to="/account"
+          className={({ isActive }) =>
+            isActive ? classes.active : classes.accountButtonNav
+          }
+        >
+          <FontAwesomeIcon icon={faCircleUser} size="2xl" />
+        </NavLink>
+        {toggle && (
+          <div className={classes.dropDown}>
+            <Link to="/account">My Account</Link>
+
+            <button className={classes.btn} /*onClick={props.onClick}*/>
+              Logout
+            </button>
+          </div>
+        )}
+      </div>
+    </Form>
+  );
+};
+
+export default HeaderCartButton;

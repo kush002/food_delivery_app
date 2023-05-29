@@ -1,0 +1,106 @@
+.header {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  /* flex: 1; */
+  margin: auto;
+  padding: 0 5%;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  background-color: #00425a;
+  color: #fbffdc;
+}
+
+.logo {
+  width: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.nav_menu {
+  width: 100%;
+  display: flex;
+  /* margin: auto; */
+  justify-content: space-between;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  width: 50%;
+  color: #fbffdc;
+  /* font-weight: bold; */
+  /* font-size: 17px; */
+  /* margin: 0; */
+}
+
+.header a {
+  color: #fbffdc;
+  text-decoration: none;
+  padding: 0 1rem;
+  font-weight: bold;
+}
+
+.account-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 0;
+  /* font-weight: bold; */
+  /* font-size: 16px; */
+  /* font-size: 20px; */
+  text-align: right;
+  /* padding: 0 1rem; */
+}
+
+.list a:hover,
+.list a.active,
+.account-details a.active,
+.admin:hover {
+  display: inline-block;
+  color: #ffd399;
+  font-weight: bold;
+  transform: scale(1.2);
+  transition: all 0.5s;
+}
+
+@media screen and (max-width: 921px) {
+  .nav_menu {
+    display: none;
+  }
+  a {
+    padding: 0;
+  }
+  .logo {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .list {
+    width: 45%;
+  }
+  .logo {
+    font-size: 25px;
+    width: 40%;
+    transition: ease-out 0.2s;
+  }
+}
+
+@media screen and (max-width: 721px) {
+  .logo {
+    font-size: 23px;
+    transition: ease-out 0.2s;
+  }
+}
