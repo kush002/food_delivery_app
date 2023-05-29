@@ -5,14 +5,17 @@ export const createCart = () => {
   return async (dispatch) => {
     const postEmptyCart = async () => {
       // console.log("kya yahi h:", cart._id);
-      const response = await fetch("http://localhost:8080/user/cart/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          items: [],
-          totalQuantity: 0,
-        }),
-      });
+      const response = await fetch(
+        "https://food-delivery-app-backend-h7d1.onrender.com/user/cart/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            items: [],
+            totalQuantity: 0,
+          }),
+        }
+      );
 
       const resData = await response.json();
       console.log("bummabumma:", resData);
@@ -45,7 +48,8 @@ export const fetchCartData = (cart) => {
       console.log("ye hai wo:", cart);
       console.log("kya yahi h:", cart._id);
       const response = await fetch(
-        "http://localhost:8080/user/cart/" + cart._id
+        "https://food-delivery-app-backend-h7d1.onrender.com/user/cart/" +
+          cart._id
       );
 
       if (!response.ok) {
@@ -78,7 +82,8 @@ export const sendCartData = (cart) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       const response = await fetch(
-        "http://localhost:8080/user/cart/" + cart._id,
+        "https://food-delivery-app-backend-h7d1.onrender.com/user/cart/" +
+          cart._id,
         {
           method: "PUT",
           body: JSON.stringify({

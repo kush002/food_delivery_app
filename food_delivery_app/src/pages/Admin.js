@@ -22,7 +22,9 @@ const AdminPage = () => {
 export default AdminPage;
 
 async function loadCategories() {
-  const response = await fetch("http://localhost:8080/admin/category");
+  const response = await fetch(
+    "https://food-delivery-app-backend-h7d1.onrender.com/admin/category"
+  );
   if (!response.ok) {
     throw json({ mesage: "Could not fetch categories" }, { status: 500 });
   } else {
@@ -56,19 +58,25 @@ export async function action({ request, params }) {
   let response;
 
   if (category.categoryName !== null) {
-    response = await fetch("http://localhost:8080/admin/category", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(category),
-    });
+    response = await fetch(
+      "https://food-delivery-app-backend-h7d1.onrender.com/admin/category",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(category),
+      }
+    );
   }
 
   if (menuItem.itemName !== null) {
-    response = await fetch("http://localhost:8080/menu/items", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(menuItem),
-    });
+    response = await fetch(
+      "https://food-delivery-app-backend-h7d1.onrender.com/menu/items",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(menuItem),
+      }
+    );
   }
 
   if (!response.ok) {
