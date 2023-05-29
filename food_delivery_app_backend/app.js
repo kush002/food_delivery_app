@@ -38,12 +38,14 @@ app.use("/error", (error, req, res, next) => {
 mongoose
   .connect(process.env.ATLS_URI, {
     useNewUrlParser: true,
-
     useUnifiedTopology: true,
   })
-  .then((result) => {
+  .then(() => {
+    // Connection successful
     app.listen(process.env.PORT);
+    console.log("Connected to MongoDB Atlas");
   })
-  .catch((err) => {
-    console.log(err);
+  .catch((error) => {
+    // Connection error
+    console.error("Error connecting to MongoDB Atlas:", error);
   });
