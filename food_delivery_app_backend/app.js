@@ -1,8 +1,9 @@
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config();
 const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
-require("dotenv").config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -35,7 +36,7 @@ app.use("/error", (error, req, res, next) => {
 });
 
 mongoose
-  .connect(process.env.DATA)
+  .connect(process.env.MONGODB_URI)
   .then((result) => {
     app.listen(process.env.PORT);
   })
