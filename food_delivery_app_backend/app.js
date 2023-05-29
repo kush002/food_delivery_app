@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
-require("dotenv").config({ path: "./" });
+require("dotenv").config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -35,7 +35,9 @@ app.use("/error", (error, req, res, next) => {
 });
 
 mongoose
-  .connect(process.env.DATABASE)
+  .connect(
+    `mongodb+srv://${process.env.DATA}@cluster0.9xk68hr.mongodb.net/food_delivery_app?retryWrites=true&w=majority`
+  )
   .then((result) => {
     app.listen(process.env.PORT);
   })
