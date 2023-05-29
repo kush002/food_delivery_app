@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-dotenv.config();
+dotenv.config({ path: "./config.env" });
 const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
