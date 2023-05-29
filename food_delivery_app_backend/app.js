@@ -36,7 +36,11 @@ app.use("/error", (error, req, res, next) => {
 });
 
 mongoose
-  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => {
     app.listen(process.env.PORT);
   })
