@@ -36,9 +36,9 @@ app.use("/error", (error, req, res, next) => {
 });
 
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(process.env.ATLS_URI, {
     useNewUrlParser: true,
-    useCreateIndex: true,
+
     useUnifiedTopology: true,
   })
   .then((result) => {
