@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
 require("dotenv").config();
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -36,7 +37,7 @@ app.use("/error", (error, req, res, next) => {
 mongoose
   .connect(process.env.DATABASE)
   .then((result) => {
-    app.listen(8080);
+    app.listen(process.env.PORT);
   })
   .catch((err) => {
     console.log(err);
