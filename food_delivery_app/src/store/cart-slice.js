@@ -8,12 +8,15 @@ console.log(initialCartId.toString());
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    _id: null,
     items: [],
     totalQuantity: 0,
     changed: false,
   },
   reducers: {
+    onLogoutCart(state, action) {
+      state.totalQuantity = action.payload.totalQuantity;
+      state.items = action.payload.items;
+    },
     replaceCart(state, action) {
       state.totalQuantity = action.payload.totalQuantity;
       state.items = action.payload.items;

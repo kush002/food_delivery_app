@@ -18,7 +18,7 @@ import AdminPage, {
 import LoginPage, { action as loginAction } from "./pages/Login";
 import SignUpPage, { action as signUpAction } from "./pages/SignUp";
 import { sendCartData, fetchCartData, createCart } from "./store/cart-actions";
-import { tokenLoader } from "./util/user";
+import { getToken, getUserId, tokenLoader } from "./util/user";
 import { action as logoutAction } from "./pages/Logout";
 
 const router = createBrowserRouter([
@@ -57,17 +57,18 @@ const App = () => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
-  console.log("cartsuo:", cart);
+
+  const userId = getUserId();
+
+  // useEffect(() => {
+  //   if (!cart._id) {
+  //     dispatch(createCart());
+  //   }
+  // }, [dispatch]);
 
   useEffect(() => {
-    if (!cart._id) {
-      dispatch(createCart());
-    }
-  }, [dispatch]);
-  // console.log("cartnew:", cart);
-  // useEffect(() => {
-  //   dispatch(fetchCartData(cart));
-  // }, []);
+    dispatch(fetchCartData());
+  }, [userId, dispatch]);
 
   useEffect(() => {
     if (isInitial) {

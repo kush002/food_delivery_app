@@ -15,7 +15,7 @@ const AdminActions = () => {
     setShowItemActions(true);
   };
 
-  const hideFormHandler = () => {
+  const hideFormHandler = (action) => {
     setShowCategoryActions(false);
     setShowItemActions(false);
   };

@@ -1,10 +1,13 @@
 .card {
-  background-color: #00425a;
+  background: rgba(0, 66, 90, 0.95);
   margin: 2rem auto;
   width: 90%;
+  height: auto;
   /* border: 1px solid #fbffdc; */
   /* background: #fbffdc; */
+  /* position: relative; */
   border-radius: 14px;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
   padding-bottom: 1rem;
+  /* z-index: 1; */
 }

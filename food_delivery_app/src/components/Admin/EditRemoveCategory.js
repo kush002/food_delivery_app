@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 // import { useState } from "react";
 import classes from "../Categories/CategoriesList.module.css";
+import { getToken } from "../../util/user";
 
 const EditRemoveCategory = ({ catList }) => {
   const navigate = useNavigate();
@@ -9,6 +10,9 @@ const EditRemoveCategory = ({ catList }) => {
       "http://localhost:8080/admin/category/" + categoryId,
       {
         method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + getToken(),
+        },
       }
     );
 

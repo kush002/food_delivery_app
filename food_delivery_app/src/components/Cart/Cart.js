@@ -14,7 +14,7 @@ const Cart = ({ cart }) => {
   console.log("kumma:", cartItems);
   // const cartItems = cart.items;
   return (
-    <Card>
+    <Card style={{ background: "rgba(0,0,0,0)", boxShadow: "none" }}>
       <div className={classes.orderInfo_container}>
         <div className={classes.container_1}>
           <div className={classes.card}>

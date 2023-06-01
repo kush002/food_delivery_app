@@ -1,6 +1,8 @@
 .menu_container {
+  position: relative;
   width: 90%;
   margin: auto;
+  /* height: auto; */
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -8,9 +10,10 @@
 }
 .menuItem_container {
   width: 47%;
+  margin: auto;
   display: flex;
   justify-content: flex-start;
-  /* margin: auto; */
+  /* height: auto; */
   margin-top: 2rem;
   height: 8rem;
   border-radius: 5px;
@@ -55,6 +58,7 @@
   font-weight: 500;
   padding-top: 0.5rem;
   color: #fbffdc;
+  font-style: italic;
 }
 
 .pricing {
@@ -92,6 +96,9 @@
   .content h2 {
     font-size: 18px;
     transition: all 1s;
+  }
+  .content p {
+    font-size: 14px;
   }
 }
 
@@ -137,7 +144,7 @@
     width: auto;
   }
   .menuItem_container {
-    height: 9.5rem;
+    height: 10rem;
   }
 
   .content h2 {
@@ -149,7 +156,7 @@
     transition: all 1s;
   }
   .content p {
-    font-size: 14px;
+    font-size: 13px;
   }
   .pricing {
     padding-top: 2rem;

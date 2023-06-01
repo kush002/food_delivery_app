@@ -2,6 +2,7 @@ import { Fragment, Suspense } from "react";
 import { json, useLoaderData, Await, defer } from "react-router-dom";
 import CategoriesList from "../components/Categories/CategoriesList";
 import Card from "../components/UI/Card";
+import { getToken } from "../util/user";
 
 const CategoriesPage = () => {
   const { categories } = useLoaderData();
@@ -19,9 +20,11 @@ const CategoriesPage = () => {
 export default CategoriesPage;
 
 async function loadCategories() {
-  const response = await fetch(
-    "https://food-delivery-app-backend-h7d1.onrender.com/admin/category"
-  );
+  const response = await fetch("http://localhost:8080/admin/category", {
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
+  });
   if (!response.ok) {
     throw json({ mesage: "Could not fetch categories" }, { status: 500 });
   } else {

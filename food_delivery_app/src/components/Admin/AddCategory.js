@@ -5,6 +5,14 @@ import classes from "./AddCategory.module.css";
 const AddCategory = (props, { method, event }) => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+  let isNormalLoad =
+    navigation.state === "loading" && navigation.formData == null;
+
+  const onSubmitHandler = () => {
+    setTimeout(() => {
+      props.onChange(isNormalLoad);
+    }, 100);
+  };
 
   return (
     <div className={classes.container}>
@@ -33,7 +41,7 @@ const AddCategory = (props, { method, event }) => {
         </div>
         <div className={classes.button_wrapper}>
           <button onClick={props.onChange}>Cancel</button>
-          <button disabled={isSubmitting}>
+          <button disabled={isSubmitting} onClick={onSubmitHandler}>
             {isSubmitting ? "Submitting..." : "Save"}
           </button>
         </div>

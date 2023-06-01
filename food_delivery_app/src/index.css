@@ -6,6 +6,13 @@
   padding: 0;
 }
 
+:root {
+  --mytext-color: #fbffdc;
+  --main-color: #00425a;
+  --main-color-shade1: #005777;
+  --buttonbg-color: #002e3f;
+}
+
 html {
   display: flex;
 

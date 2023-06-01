@@ -1,21 +1,32 @@
 import classes from "./HeaderCartButton.module.css";
 import { useState } from "react";
+import {} from "react-redux";
+import { cartActions } from "../../store/cart-slice";
 import { NavLink, Link, Form } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
   faCircleUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 const HeaderCartButton = (props) => {
   const [toggle, setToggle] = useState(false);
   const qty = useSelector((state) => state.cart.totalQuantity);
-
+  const dispatch = useDispatch();
   const showOptionHandler = () => {
     setToggle(true);
   };
   const hideOptionHandler = () => {
     setToggle(false);
+  };
+
+  const onLogoutHandler = () => {
+    dispatch(
+      cartActions.onLogoutCart({
+        items: [],
+        totalQuantity: 0,
+      })
+    );
   };
 
   return (
@@ -49,7 +60,7 @@ const HeaderCartButton = (props) => {
           <div className={classes.dropDown}>
             <Link to="/account">My Account</Link>
 
-            <button className={classes.btn} /*onClick={props.onClick}*/>
+            <button className={classes.btn} onClick={onLogoutHandler}>
               Logout
             </button>
           </div>

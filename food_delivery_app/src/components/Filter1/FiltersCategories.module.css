@@ -1,0 +1,53 @@
+.modalFilter {
+  top: 15vh;
+  left: 2%;
+}
+.headContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--main-color);
+}
+
+.actionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}
+
+.actionContainer p {
+  text-decoration: underline;
+  text-underline-position: under;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.selectCat {
+  display: block;
+  padding: 0.5rem;
+  border-bottom: 2px solid var(--main-color);
+}
+
+.selectCat p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: auto;
+  padding: 0.2rem 0;
+}
+
+.inputContainer input {
+  transform: scale(1.2);
+  margin: 0 0.5rem;
+}
+.inputContainer label {
+  font-size: 14px;
+  font-weight: bold;
+}

@@ -6,6 +6,12 @@ const AddItem = (props, { method, event }) => {
   const navigation = useNavigation();
   const isSubmit = navigation.state === "submitting";
 
+  const onSubmitHandler = () => {
+    setTimeout(() => {
+      props.onChange(isSubmit);
+    }, 100);
+  };
+
   return (
     <div className={classes.container}>
       <h1>Add Food Item</h1>
@@ -65,7 +71,7 @@ const AddItem = (props, { method, event }) => {
         </div>
         <div className={classes.button_wrapper}>
           <button onClick={props.onChange}>Cancel</button>
-          <button disabled={isSubmit}>
+          <button disabled={isSubmit} onClick={onSubmitHandler}>
             {isSubmit ? "Submitting..." : "Save"}
           </button>
           {/* <button>Saveing</button> */}

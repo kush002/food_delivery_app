@@ -1,18 +1,29 @@
 import { json, useLoaderData, Await, defer } from "react-router-dom";
-import { Suspense } from "react";
+import { Fragment, Suspense } from "react";
 import Card from "../components/UI/Card";
 import MenuSummary from "../components/Menu/MenuSummary";
 import MenuList from "../components/Menu/MenuList";
+import FilterContainer from "../components/Filter1/FilterButton";
+import { getToken } from "../util/user";
+import FiltersCategories from "../components/Filter1/FiltersCategories";
 
 const MenuPage = () => {
   const { items } = useLoaderData();
   // console.log(data.items);
   return (
-    <Card>
+    <Card style={{ position: "relative" }}>
       <MenuSummary />
+      {/* <FilterContainer /> */}
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
         <Await resolve={items}>
-          {(loadedMenu) => <MenuList items={loadedMenu} />}
+          {(loadedMenu) => {
+            return (
+              <Fragment>
+                <MenuList items={loadedMenu} />
+                <FiltersCategories items={loadedMenu} />
+              </Fragment>
+            );
+          }}
         </Await>
       </Suspense>
     </Card>
@@ -22,9 +33,11 @@ const MenuPage = () => {
 export default MenuPage;
 
 async function loadMenu() {
-  const response = await fetch(
-    "https://food-delivery-app-backend-h7d1.onrender.com/menu/items"
-  );
+  const response = await fetch("http://localhost:8080/menu/items", {
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
+  });
 
   if (!response.ok) {
     throw json({ mesage: "Could not fetch items" }, { status: 500 });

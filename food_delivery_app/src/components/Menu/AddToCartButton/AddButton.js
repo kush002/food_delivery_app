@@ -20,7 +20,6 @@ const AddButton = ({ item }) => {
         quantity: inputRef.current.value > 1 ? +inputRef.current.value : 1,
       })
     );
-    console.log(+inputRef.current.value);
   };
 
   return (
