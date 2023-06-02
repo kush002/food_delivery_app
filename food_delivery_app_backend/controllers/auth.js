@@ -52,7 +52,7 @@ exports.login = async (req, res, next) => {
         userId: loadedUser._id.toString(),
       },
       "supersecretkeybro",
-      { expiresIn: "1h" }
+      { expiresIn: "12h" }
     );
 
     res.status(200).json({ token: token, userId: loadedUser._id.toString() });

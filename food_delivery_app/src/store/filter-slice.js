@@ -8,12 +8,14 @@ const filterSlice = createSlice({
     catName: null,
     items: [],
     filteredItem: [],
+    priceSorting: "lowToHigh",
   },
   reducers: {
     addFilter(state, action) {
       state.showSelectedCat = action.payload.showSelectedCat;
       state.catName = action.payload.catName;
       state.items = action.payload.items;
+
       //   state.filteredItem = [...state.items];
       if (state.showSelectedCat) {
         const product = state.items.filter(
@@ -27,6 +29,19 @@ const filterSlice = createSlice({
 
         state.filteredItem = [...product];
       }
+    },
+    priceSort(state, action) {
+      state.priceSorting = action.payload.priceSorting;
+
+      //   if (state.priceSorting === "lowToHigh" && state.showSelectedCat) {
+      //     const product = [...state.items].sort((a, b) => a.price - b.price);
+
+      //     state.filteredItem = [...product];
+      //   }
+      //   if (state.priceSorting === "highToLow" && state.showSelectedCat) {
+      //     const product = [...state.items].sort((a, b) => b.price - a.price);
+      //     state.filteredItem = [...product];
+      //   }
     },
   },
 });

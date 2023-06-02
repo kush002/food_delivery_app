@@ -4,20 +4,31 @@ import classes from "./MenuList.module.css";
 import AddButton from "./AddToCartButton/AddButton";
 
 const MenuList = (props) => {
-  const filters = useSelector((state) => state.filter.filteredItem);
+  const filters = useSelector((state) => state.filter);
 
   let main;
-  if (filters.length === 0) {
+  if (filters.filteredItem.length === 0) {
     main = props.items;
   } else {
-    main = filters;
+    main = filters.filteredItem;
   }
 
-  // const item = filter.activeCat.map((category) => category);
+  const map = new Map();
+  console.log("main:", main);
+  main = main.filter((item) => {
+    if (map.get(item._id)) {
+      return false;
+    }
+    map.set(item._id, item);
+    return true;
+  });
 
-  // if (filter.showSelectedCat) {
-  //   console.log("item:",filter;
-  // }
+  if (filters.priceSorting === "lowToHigh") {
+    main.sort((a, b) => a.price - b.price);
+  }
+  if (filters.priceSorting === "highToLow") {
+    main.sort((a, b) => b.price - a.price);
+  }
   console.log("main:", filters);
   return (
     <Fragment>
