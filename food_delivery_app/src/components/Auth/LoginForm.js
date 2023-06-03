@@ -12,9 +12,16 @@ import classes from "./LoginForm.module.css";
 const LoginForm = ({ method, event }) => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
+
   const [toggle, setToggle] = useState(false);
+  const [guest, setGuest] = useState(false);
+  const [login, setLogin] = useState(false);
   const showPasswordHandler = () => {
     setToggle(!toggle);
+  };
+
+  const guestHandler = (event) => {
+    setGuest(true);
   };
 
   return (
@@ -27,7 +34,9 @@ const LoginForm = ({ method, event }) => {
           <input
             type="email"
             id="emailId"
-            defaultValue={event ? event.email : ""}
+            defaultValue={
+              guest ? "guest@welcome.com" : event ? event.email : ""
+            }
             name="userEmail"
             required
           />
@@ -37,7 +46,7 @@ const LoginForm = ({ method, event }) => {
           <input
             type={!toggle ? "password" : "text"}
             id="user_password"
-            defaultValue={event ? event.password : ""}
+            defaultValue={guest ? "welcome" : event ? event.password : ""}
             required
             name="loginPassword"
           />
@@ -48,10 +57,10 @@ const LoginForm = ({ method, event }) => {
         </div>
         <div className={classes.button_wrapper}>
           <button disabled={isSubmitting}>
-            {isSubmitting ? "Logging..." : "Let's Get Inside"}
+            {!guest && isSubmitting ? "Logging..." : "Let's Get Inside"}
           </button>
-          <button disabled={isSubmitting}>
-            {isSubmitting ? "Logging..." : "Login As Guest"}
+          <button onClick={guestHandler} disabled={isSubmitting}>
+            {guest && isSubmitting ? "Logging..." : "Login As Guest"}
           </button>
         </div>
         <div className={classes.linkWrapper}>

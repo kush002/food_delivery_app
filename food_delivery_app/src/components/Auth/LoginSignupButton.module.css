@@ -3,7 +3,8 @@
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
-  padding: 0.3rem 0;
+  padding: 0.25rem 0;
+  margin-left: 5px;
   /* padding-left: 0rem; */
   /* border-radius: 5px; */
 }
@@ -11,7 +12,7 @@
 .container:hover {
   background-color: #fbffdc;
   /* border-color: #002e3f; */
-  border-radius: 5px;
+  border-radius: 8px;
   color: #002e3f;
   transform: scale(1.1);
   transition: all 1s;

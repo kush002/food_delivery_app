@@ -62,9 +62,11 @@ const Header = () => {
             </div>
           )}
           <div className={classes["account-details"]}>
-            {token && (
-              <HeaderCartButton className={classes["account-details"]} />
-            )}
+            <HeaderCartButton
+              hideAccount={token}
+              className={classes["account-details"]}
+            />
+
             {!token && <LoginSignupButton />}
           </div>
         </div>

@@ -9,27 +9,28 @@
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
   top: 14vh;
   left: 6%;
-  width: 90%;
+  width: 20rem;
   background-color: var(--mytext-color);
   padding: 1rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rfba(0, 0, 0, 0.25);
   z-index: 30;
-  animation: slide-down 300ms ease-out forwards;
+
+  animation: slide-down 500ms ease-out forwards;
 }
 
 @media (min-width: 721px) {
   .modal {
-    width: 20rem;
+    /* width: 20rem; */
     /* left: calc(10%); */
   }
 }
 
 @keyframes slide-down {
-  form {
+  from {
     opacity: 0;
     transform: translateY(-3rem);
   }
