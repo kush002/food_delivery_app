@@ -8,7 +8,8 @@ const filterSlice = createSlice({
     catName: null,
     items: [],
     filteredItem: [],
-    priceSorting: "lowToHigh",
+    priceSorting: "",
+    checkedIds: {},
   },
   reducers: {
     addFilter(state, action) {
@@ -32,16 +33,14 @@ const filterSlice = createSlice({
     },
     priceSort(state, action) {
       state.priceSorting = action.payload.priceSorting;
-
-      //   if (state.priceSorting === "lowToHigh" && state.showSelectedCat) {
-      //     const product = [...state.items].sort((a, b) => a.price - b.price);
-
-      //     state.filteredItem = [...product];
-      //   }
-      //   if (state.priceSorting === "highToLow" && state.showSelectedCat) {
-      //     const product = [...state.items].sort((a, b) => b.price - a.price);
-      //     state.filteredItem = [...product];
-      //   }
+    },
+    retainCategory(state, action) {
+      state.checkedIds = action.payload.checkedIds;
+      //   console.log("boblo");
+      if (Object.keys(state.checkedIds).length === 0) {
+        console.log("boblo");
+        state.filteredItem = [];
+      }
     },
   },
 });

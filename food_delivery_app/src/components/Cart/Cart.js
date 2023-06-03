@@ -3,6 +3,9 @@ import Card from "../UI/Card";
 import Orders from "./Orders";
 import BillInfo from "./BillInfo";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Cart = ({ cart }) => {
   // const dispatch = useDispatch();
@@ -16,16 +19,32 @@ const Cart = ({ cart }) => {
   return (
     <Card style={{ background: "rgba(0,0,0,0)", boxShadow: "none" }}>
       <div className={classes.orderInfo_container}>
-        <div className={classes.container_1}>
-          <div className={classes.card}>
-            {cartItems.map((item) => (
-              <Orders key={item._id} item={item} />
-            ))}
+        {cartItems.length === 0 && (
+          <div
+            className={classes.iconContainer}
+            style={{ width: "90%", zIndex: 30 }}
+          >
+            <div className={classes.cartText}>Empty cart !</div>
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              size="2xl"
+              className={classes.icon}
+            />
           </div>
-        </div>
-        <div className={classes.container_2}>
-          <BillInfo className={classes.card} />
-        </div>
+        )}
+        {cartItems.length > 0 && (
+          <div className={classes.container_1}>
+            <div className={classes.card}>
+              {cartItems &&
+                cartItems.map((item) => <Orders key={item._id} item={item} />)}
+            </div>
+          </div>
+        )}
+        {cartItems.length > 0 && (
+          <div className={classes.container_2}>
+            <BillInfo className={classes.card} items={cartItems} />
+          </div>
+        )}
       </div>
     </Card>
   );

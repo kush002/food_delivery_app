@@ -5,7 +5,7 @@ import classes from "./FiltersCategories.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../Modal/Modal";
-const FiltersCategories = ({ items }) => {
+const FiltersCategories = ({ items, onClick }) => {
   const [show, setShow] = useState(false);
   const filter = useSelector((state) => state.filter);
   const dispatch = useDispatch();
@@ -31,24 +31,42 @@ const FiltersCategories = ({ items }) => {
     );
   };
 
-  const removeFilterHandler = (event) => {
+  const allCategoryHandler = (event) => {
+    const checkedBoxId = event.target.id;
+    dispatch(
+      filterActions.retainCategory({
+        checkedIds: {
+          ...filter.checkedIds,
+          [checkedBoxId]: event.target.checked,
+        },
+      })
+    );
+  };
+
+  const removeFilterCategoryHandler = (event) => {
+    dispatch(
+      filterActions.retainCategory({
+        checkedIds: {},
+      })
+    );
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
     });
   };
+
   const map = new Map();
   return (
-    <Modal className={classes.modalFilter}>
-      <div>
+    <Modal style={{ width: "20rem" }} onClick={onClick}>
+      <div onChange={allCategoryHandler}>
         <div className={classes.headContainer}>
           <h2>Filter</h2>
-          <div
-            className={classes.actionContainer}
-            onClick={removeFilterHandler}
-          >
-            <p>Clear All</p>
-            <div>
+          <div className={classes.actionContainer}>
+            <div onClick={removeFilterCategoryHandler}>
+              <p>Clear All</p>
+            </div>
+
+            <div onClick={onClick} className={classes.icon}>
               <FontAwesomeIcon icon={faX} />
             </div>
           </div>
@@ -68,6 +86,7 @@ const FiltersCategories = ({ items }) => {
               <div key={item._id} className={classes.inputContainer}>
                 <input
                   type="checkbox"
+                  defaultChecked={!!filter.checkedIds[item._id]}
                   id={item._id}
                   name={item.itemCategoryName}
                 />
@@ -80,6 +99,7 @@ const FiltersCategories = ({ items }) => {
           <div className={classes.inputContainer}>
             <input
               type="checkbox"
+              defaultChecked={!!filter.checkedIds["low-toohigh"]}
               //   defaultChecked={!show}
               id="low-to-high"
               name="lowToHigh"
@@ -90,23 +110,31 @@ const FiltersCategories = ({ items }) => {
           <div className={classes.inputContainer}>
             <input
               type="checkbox"
+              defaultChecked={!!filter.checkedIds["high-to-low"]}
               //   defaultChecked={show}
-              id="highr-to-low"
+              id="high-to-low"
               name="highToLow"
               value="highToLow"
             />
-            <label htmlFor="highr-to-low">High To Low</label>
+            <label htmlFor="high-to-low">High To Low</label>
           </div>
         </div>
         <div className={classes.selectCat} onChange={dietChangeHandler}>
           <p>Diet</p>
           <div className={classes.inputContainer}>
-            <input type="checkbox" id="vegItem" name="veg" value="veg" />
+            <input
+              type="checkbox"
+              defaultChecked={!!filter.checkedIds["vegItem"]}
+              id="vegItem"
+              name="veg"
+              value="veg"
+            />
             <label htmlFor="vegItem">Veg</label>
           </div>
           <div className={classes.inputContainer}>
             <input
               type="checkbox"
+              defaultChecked={!!filter.checkedIds["non-vegItem"]}
               id="non-vegItem"
               name="nonveg"
               value="nonveg"

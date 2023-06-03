@@ -1,7 +1,3 @@
-.modalFilter {
-  top: 15vh;
-  left: 2%;
-}
 .headContainer {
   position: relative;
   display: flex;
@@ -23,6 +19,11 @@
   font-weight: 600;
   font-style: italic;
   cursor: pointer;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  transition: all 1s;
 }
 
 .actionContainer p:hover {

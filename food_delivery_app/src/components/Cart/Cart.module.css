@@ -1,7 +1,7 @@
 .orderInfo_container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   /* margin: 0 2rem; */
 }
 
@@ -9,36 +9,99 @@
 .container_2 {
   /* margin: auto; */
   /* background-color: aqua; */
-  height: 80vh;
-  margin-top: 2.5rem;
+  /* height: 100%; */
+  /* overflow: auto; */
+  margin-top: 2rem;
   margin-bottom: 1rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 .container_1 {
   /* display: flex;
   flex-direction: column; */
+  min-height: 80vh;
   margin-left: 2.5rem;
   margin-right: 1.5rem;
   width: 60%;
+
   /* background: rgba(0, 66, 90, 0.95); */
 }
 .container_2 {
   width: 30%;
   margin-left: 1.5rem;
   margin-right: 2.5rem;
+  min-height: 80vh;
+  /* min-width: 40vh; */
+
   /* background: rgba(0, 66, 90, 0.95); */
 }
 
 .card {
+  position: relative;
   background-color: rgba(0, 66, 90, 0.95);
   /* margin: 2rem auto; */
   width: 100%;
-  height: 100%;
+  min-height: 80vh;
   /* border: 1px solid #fbffdc; */
   /* background: #fbffdc; */
   border-radius: 14px;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
   padding-bottom: 1rem;
   margin: auto;
+}
+
+.iconContainer {
+  display: flex;
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  color: var(--mytext-color);
+  background-color: rgba(0, 66, 90, 0.95);
+  /* margin: 2rem auto; */
+  width: 100%;
+  min-height: 80vh;
+  /* border: 1px solid #fbffdc; */
+  /* background: #fbffdc; */
+  border-radius: 14px;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.icon {
+  font-size: 350px;
+}
+
+.cartText {
+  color: var(--buttonbg-color);
+  z-index: 20;
+  font-weight: bold;
+  font-size: 20px;
+  margin: auto;
+  /* padding: 2rem; */
+  position: absolute;
+  top: 16.5rem;
+  /* left: 14rem; */
+  padding-right: 0;
+  margin-left: 40px;
+}
+
+.icon,
+.cartText {
+  animation: slide-right 1s ease-out forwards;
+}
+@keyframes slide-right {
+  from {
+    opacity: 1;
+    transform: translateX(-53rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

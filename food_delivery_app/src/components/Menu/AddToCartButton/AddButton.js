@@ -4,22 +4,29 @@ import classes from "./AddButton.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { cartActions } from "../../../store/cart-slice";
-
+import { getToken } from "../../../util/user";
+import { useNavigate } from "react-router-dom";
 const AddButton = ({ item }) => {
   const inputRef = useRef();
   const dispatch = useDispatch();
+  const token = getToken();
+  const navigate = useNavigate();
   const { itemName, imageUrl, price, _id } = item;
   const addToCartHandler = (event) => {
     event.preventDefault();
-    dispatch(
-      cartActions.addToCart({
-        itemName,
-        imageUrl,
-        price,
-        _id,
-        quantity: inputRef.current.value > 1 ? +inputRef.current.value : 1,
-      })
-    );
+    if (token) {
+      dispatch(
+        cartActions.addToCart({
+          itemName,
+          imageUrl,
+          price,
+          _id,
+          quantity: inputRef.current.value > 1 ? +inputRef.current.value : 1,
+        })
+      );
+    } else {
+      navigate("/login");
+    }
   };
 
   return (

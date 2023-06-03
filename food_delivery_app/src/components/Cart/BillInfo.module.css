@@ -1,0 +1,110 @@
+.container {
+  margin: 2rem;
+}
+.tag {
+  font-size: large;
+  font-weight: bold;
+  color: var(--mytext-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--mytext-color);
+}
+
+.cartTotal,
+.totalPrice {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  justify-content: stretch;
+  font-size: medium;
+  font-weight: 600;
+  color: var(--mytext-color);
+
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--mytext-color);
+}
+
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+
+.cartTotal span {
+  padding-bottom: 1rem;
+}
+
+.totalPrice {
+  padding-top: 0.5rem;
+  color: var(--mytext-color);
+  /* background-
+  color: var(--mytext-color); */
+  font-size: large;
+  /* padding-right: 0.1rem; */
+}
+
+.containerInput {
+  color: #fbffdc;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 3rem;
+  padding-top: 2.5rem;
+}
+.inputContainer {
+  width: 70%;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+.inputContainer input,
+.inputContainer label {
+  display: block;
+}
+
+.inputContainer label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.inputContainer input {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  /* max-width: 100%; */
+  background-color: #fbffdc;
+}
+
+.inputContainer input:focus {
+  outline: none;
+  border-color: #001d27;
+  background-color: #d0f0fc;
+}
+/* #fbffdc;
+    border: 1px solid #00425a; */
+
+.button_wrapper {
+  text-align: right;
+  font-weight: bold;
+}
+
+.order_button_wrapper {
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+}
+
+.order_button_wrapper button {
+  width: 80%;
+  background: #002e3f;
+  color: var(--mytext-color);
+}
+
+.order_button_wrapper button:hover {
+  background: var(--mytext-color);
+  color: #002e3f;
+}

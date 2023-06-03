@@ -22,6 +22,10 @@ const MenuList = (props) => {
     map.set(item._id, item);
     return true;
   });
+  console.log(filters.checkedIds);
+  if (filters.checkedIds[0]) {
+    console.log("boloji");
+  }
 
   if (filters.priceSorting === "lowToHigh") {
     main.sort((a, b) => a.price - b.price);

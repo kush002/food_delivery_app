@@ -43,29 +43,31 @@ const HeaderCartButton = (props) => {
           <span className={classes.badge}>{qty}</span>
         </NavLink>
       </div>
-      <div
-        className={classes.accountButton}
-        onMouseOver={showOptionHandler}
-        onMouseLeave={hideOptionHandler}
-      >
-        <NavLink
-          to="/account"
-          className={({ isActive }) =>
-            isActive ? classes.active : classes.accountButtonNav
-          }
+      {props.hideAccount && (
+        <div
+          className={classes.accountButton}
+          onMouseOver={showOptionHandler}
+          onMouseLeave={hideOptionHandler}
         >
-          <FontAwesomeIcon icon={faCircleUser} size="2xl" />
-        </NavLink>
-        {toggle && (
-          <div className={classes.dropDown}>
-            <Link to="/account">My Account</Link>
+          <NavLink
+            to="/account"
+            className={({ isActive }) =>
+              isActive ? classes.active : classes.accountButtonNav
+            }
+          >
+            <FontAwesomeIcon icon={faCircleUser} size="2xl" />
+          </NavLink>
+          {toggle && (
+            <div className={classes.dropDown}>
+              <Link to="/account">My Account</Link>
 
-            <button className={classes.btn} onClick={onLogoutHandler}>
-              Logout
-            </button>
-          </div>
-        )}
-      </div>
+              <button className={classes.btn} onClick={onLogoutHandler}>
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </Form>
   );
 };

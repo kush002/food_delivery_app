@@ -23,10 +23,11 @@ const AdminPage = () => {
 export default AdminPage;
 
 async function loadCategories() {
-  const response = await fetch("http://localhost:8080/admin/category",{headers: {
-    Authorization: "Bearer " + getToken(),
-    
-  }});
+  const response = await fetch("http://localhost:8080/admin/category", {
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
+  });
   if (!response.ok) {
     throw json({ mesage: "Could not fetch categories" }, { status: 500 });
   } else {

@@ -14,7 +14,9 @@ const MenuPage = () => {
   const showFilterHandler = () => {
     setShowFilter(true);
   };
-  const hideFilterHandler = () => {};
+  const hideFilterHandler = () => {
+    setShowFilter(false);
+  };
   return (
     <Card style={{ position: "relative" }}>
       <MenuSummary />
@@ -25,7 +27,12 @@ const MenuPage = () => {
             return (
               <Fragment>
                 <MenuList items={loadedMenu} />
-                {showFilter && <FiltersCategories items={loadedMenu} />}
+                {showFilter && (
+                  <FiltersCategories
+                    items={loadedMenu}
+                    onClick={hideFilterHandler}
+                  />
+                )}
               </Fragment>
             );
           }}
