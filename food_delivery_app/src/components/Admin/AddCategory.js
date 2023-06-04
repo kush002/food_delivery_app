@@ -1,17 +1,18 @@
-import { useNavigation, Form } from "react-router-dom";
+import { useNavigation, Form, useParams } from "react-router-dom";
 import classes from "./AddCategory.module.css";
 import Modal from "../Modal/Modal";
 
-const AddCategory = (props, { method, event }) => {
+const AddCategory = (props) => {
+  const params = useParams();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   let isNormalLoad =
     navigation.state === "loading" && navigation.formData == null;
-
+  console.log(props.event, props.method, params);
   const onSubmitHandler = () => {
     setTimeout(() => {
       props.onChange(isNormalLoad);
-    }, 100);
+    }, 1000);
   };
 
   return (
@@ -25,15 +26,15 @@ const AddCategory = (props, { method, event }) => {
       onClick={props.onChange}
     >
       <div className={classes.container}>
-        <h1>Add Categories</h1>
-        <Form method="post">
+        <h1>{props.event ? "Edit Categories" : "Add Categories"} </h1>
+        <Form method={props.method}>
           <div className={classes.inputContainer}>
             <label htmlFor="category_name">Category Name</label>
 
             <input
               type="text"
               id="category_name"
-              defaultValue={event ? event.categoryName : ""}
+              defaultValue={props.event ? props.event.categoryName : ""}
               name="categoryName"
               //   required
             />
@@ -43,7 +44,7 @@ const AddCategory = (props, { method, event }) => {
             <input
               type="text"
               id="category_imageUrl"
-              defaultValue={event ? event.categoryImage : ""}
+              defaultValue={props.event ? props.event.categoryImage : ""}
               //   required
               name="categoryImage"
             />

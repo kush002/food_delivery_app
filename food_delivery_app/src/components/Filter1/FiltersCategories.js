@@ -11,22 +11,24 @@ const FiltersCategories = ({ items, onClick }) => {
   const dispatch = useDispatch();
   const priceSortHandler = (event) => {
     setShow(!show);
+
     dispatch(
       filterActions.priceSort({
-        showSelectedCat: event.target.checked,
-        catName: null,
-        items: [...items],
         priceSorting: event.target.checked ? event.target.name : null,
       })
     );
   };
   const dietChangeHandler = () => {};
   const categoryHandler = (event) => {
+    const catArray = items.filter(
+      (item) => item.itemCategoryName === event.target.name
+    );
+    console.log(catArray);
     dispatch(
       filterActions.addFilter({
         showSelectedCat: event.target.checked,
         catName: event.target.name,
-        items: [...items],
+        items: [...catArray],
       })
     );
   };
@@ -83,11 +85,11 @@ const FiltersCategories = ({ items, onClick }) => {
               return true;
             })
             .map((item) => (
-              <div key={item._id} className={classes.inputContainer}>
+              <div key={item.categoryId} className={classes.inputContainer}>
                 <input
                   type="checkbox"
-                  defaultChecked={!!filter.checkedIds[item._id]}
-                  id={item._id}
+                  defaultChecked={!!filter.checkedIds[item.categoryId]}
+                  id={item.categoryId}
                   name={item.itemCategoryName}
                 />
                 <label htmlFor={item._id}>{item.itemCategoryName}</label>
