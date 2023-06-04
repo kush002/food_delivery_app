@@ -10,4 +10,6 @@ router.get("/category", catController.getCategory);
 
 router.delete("/category/:categoryId", isAuth, catController.deleteCategory);
 
+router.put("/category/:catId", isAuth, catController.editCategory);
+
 module.exports = router;
