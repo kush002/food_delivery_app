@@ -44,7 +44,8 @@ export async function loader() {
 
 export async function action({ request, params }) {
   const data = await request.formData();
-
+  const catId = params.catId;
+  console.log(catId, params);
   const category = {
     categoryName: data.get("categoryName"),
     categoryImage: data.get("categoryImage"),
@@ -60,8 +61,18 @@ export async function action({ request, params }) {
 
   let response;
 
+  if (request.method === "PUT") {
+    response = await fetch("http://localhost:8080/admin/category/" + catId, {
+      method: request.method,
+      headers: {
+        Authorization: "Bearer " + getToken(),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(category),
+    });
+  }
   if (category.categoryName !== null) {
-    response = await fetch("http://localhost:8080/admin/category", {
+    response = await fetch("http://localhost:8080/admin/category/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(category),
@@ -80,28 +91,5 @@ export async function action({ request, params }) {
     throw json({ message: "Could not save data" }, { status: 500 });
   }
 
-  return redirect("/admin-page");
+  return redirect(`/admin-page`);
 }
-
-// export const itemAction = async ({ request, params }) => {
-//   const data = await request.formData();
-//   const menuItem = {
-//     itemName: data.get("itemName"),
-//     categoryName: data.get("categoryName"),
-//     imageUrl: data.get("itemImage"),
-//     price: data.get("itemPrice"),
-//     description: data.get("itemDesc"),
-//   };
-
-//   const response = await fetch("http://localhost:8080/menu/items", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(menuItem),
-//   });
-
-//   if (!response.ok) {
-//     throw json({ message: "could not post data" }, { status: 500 });
-//   }
-
-//   return redirect("/menu");
-// };

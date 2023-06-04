@@ -19,10 +19,7 @@ const filterSlice = createSlice({
 
       //   state.filteredItem = [...state.items];
       if (state.showSelectedCat) {
-        const product = state.items.filter(
-          (item) => item.itemCategoryName === state.catName
-        );
-        state.filteredItem = [...state.filteredItem, ...product];
+        state.filteredItem = [...state.filteredItem, ...state.items];
       } else {
         const product = state.filteredItem.filter(
           (item) => item.itemCategoryName !== state.catName
@@ -33,12 +30,19 @@ const filterSlice = createSlice({
     },
     priceSort(state, action) {
       state.priceSorting = action.payload.priceSorting;
+      state.filteredItem = [...state.filteredItem];
     },
     retainCategory(state, action) {
       state.checkedIds = action.payload.checkedIds;
+      state.showSelectedCat = action.payload.showSelectedCat;
+      state.catName = action.payload.catName;
+      state.items = action.payload.items;
+
+      // if (state.showSelectedCat) {
+      //   state.filteredItem = [...state.filteredItem, ...state.items];
+      // }
       //   console.log("boblo");
       if (Object.keys(state.checkedIds).length === 0) {
-        console.log("boblo");
         state.filteredItem = [];
       }
     },

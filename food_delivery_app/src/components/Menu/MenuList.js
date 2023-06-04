@@ -8,23 +8,25 @@ const MenuList = (props) => {
 
   let main;
   if (filters.filteredItem.length === 0) {
-    main = props.items;
+    main = [...props.items];
   } else {
-    main = filters.filteredItem;
+    main = [...filters.filteredItem];
   }
 
-  const map = new Map();
+  // const map = new Map();
   console.log("main:", main);
-  main = main.filter((item) => {
-    if (map.get(item._id)) {
-      return false;
-    }
-    map.set(item._id, item);
-    return true;
-  });
+  // main = main.filter((item) => {
+  //   if (map.get(item._id)) {
+  //     return false;
+  //   }
+  //   map.set(item._id, item);
+  //   return true;
+  // });
   console.log(filters.checkedIds);
-  if (filters.checkedIds[0]) {
-    console.log("boloji");
+
+  if (filters.showSelectedCat && filters.filteredItem.length === 0) {
+    console.log("true");
+    main = props.items.filter((item) => filters.items.includes(item._id));
   }
 
   if (filters.priceSorting === "lowToHigh") {
@@ -33,7 +35,7 @@ const MenuList = (props) => {
   if (filters.priceSorting === "highToLow") {
     main.sort((a, b) => b.price - a.price);
   }
-  console.log("main:", filters);
+  console.log("main:", filters, main);
   return (
     <Fragment>
       <div className={classes.menu_container}>

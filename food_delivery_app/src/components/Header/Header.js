@@ -55,7 +55,7 @@ const Header = () => {
                 className={({ isActive }) =>
                   isActive ? classes.active : classes.admin
                 }
-                to="/admin-page"
+                to="admin-page"
               >
                 Admin
               </NavLink>

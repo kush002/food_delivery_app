@@ -37,3 +37,31 @@ exports.deleteCategory = async (req, res, next) => {
 
   res.status(200).json({ message: "Deleted" });
 };
+
+exports.editCategory = async (req, res, next) => {
+  const catId = req.params.catId;
+  try {
+    const category = await Category.findById(catId);
+
+    if (!category) {
+      const error = new Error("Category Not found");
+      error.statusCode = 401;
+      throw error;
+    }
+
+    category.categoryName = req.body.categoryName;
+    category.categoryImage = req.body.categoryImage;
+
+    await category.save();
+    const items = category.items;
+    await Item.updateMany(
+      { _id: { $in: items } },
+      { $set: { itemCategoryName: req.body.categoryName } }
+    );
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  }
+};

@@ -21,7 +21,9 @@ const AdminActions = () => {
   };
   return (
     <div className={classes.actions_container}>
-      {showCategoryActions && <AddCategory onChange={hideFormHandler} />}
+      {showCategoryActions && (
+        <AddCategory method={"post"} onChange={hideFormHandler} />
+      )}
       {showItemActions && <AddItem onChange={hideFormHandler} />}
       {!showCategoryActions && !showItemActions && (
         <button

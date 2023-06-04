@@ -36,14 +36,20 @@ const router = createBrowserRouter([
         id: "catId",
         element: <CategoriesPage />,
         loader: categoryLoader,
+        children: [
+          { path: "categories/:categoryId", element: <CategoryDetailsPage /> },
+        ],
       },
-      { path: "categories/:categoryId", element: <CategoryDetailsPage /> },
+
       {
-        path: "admin-page",
+        path: ":catId",
         element: <AdminPage />,
+        id: "adminroot",
         action: adminAction,
         loader: adminLoader,
+        children: [{ path: ":catId", element: <CategoryDetailsPage /> }],
       },
+
       { path: "orders", element: <OrdersPage /> },
       { path: "account", element: <AccountPage /> },
       { path: "login", element: <LoginPage />, action: loginAction },
