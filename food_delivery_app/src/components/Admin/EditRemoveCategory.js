@@ -16,7 +16,8 @@ const EditRemoveCategory = ({ catList }) => {
       return;
     }
     const response = await fetch(
-      "http://localhost:8080/admin/category/" + categoryId,
+      "https://food-delivery-app-backend-h7d1.onrender.com/admin/category/" +
+        categoryId,
       {
         method: "DELETE",
         headers: {
