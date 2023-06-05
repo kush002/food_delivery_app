@@ -33,7 +33,7 @@ const CategoriesList = ({ catList }) => {
               <img src={cat.categoryImage} alt={cat.categoryName} />
               <p>{cat.categoryName}</p>
               <Link
-                to={`/categories/${cat._id}`}
+                to={`/menu`}
                 className={classes.button}
                 onClick={showCategoryHandler.bind(
                   this,

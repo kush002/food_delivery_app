@@ -20,6 +20,7 @@ import SignUpPage, { action as signUpAction } from "./pages/SignUp";
 import { sendCartData, fetchCartData, createCart } from "./store/cart-actions";
 import { getToken, getUserId, tokenLoader } from "./util/user";
 import { action as logoutAction } from "./pages/Logout";
+import CheckoutPage, { action as addressAction } from "./pages/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -47,9 +48,9 @@ const router = createBrowserRouter([
         id: "adminroot",
         action: adminAction,
         loader: adminLoader,
-        children: [{ path: ":catId", element: <CategoryDetailsPage /> }],
+        // children: [{ path: ":catId", element: <CategoryDetailsPage /> }],
       },
-
+      { path: "checkout", element: <CheckoutPage />, action: addressAction },
       { path: "orders", element: <OrdersPage /> },
       { path: "account", element: <AccountPage /> },
       { path: "login", element: <LoginPage />, action: loginAction },

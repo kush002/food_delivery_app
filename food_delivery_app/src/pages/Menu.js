@@ -45,14 +45,11 @@ const MenuPage = () => {
 export default MenuPage;
 
 async function loadMenu() {
-  const response = await fetch(
-    "https://food-delivery-app-backend-h7d1.onrender.com/menu/items",
-    {
-      headers: {
-        Authorization: "Bearer " + getToken(),
-      },
-    }
-  );
+  const response = await fetch("http://localhost:8080/menu/items", {
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
+  });
 
   if (!response.ok) {
     throw json({ mesage: "Could not fetch items" }, { status: 500 });

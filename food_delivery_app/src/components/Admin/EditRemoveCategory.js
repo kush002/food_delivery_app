@@ -16,8 +16,7 @@ const EditRemoveCategory = ({ catList }) => {
       return;
     }
     const response = await fetch(
-      "https://food-delivery-app-backend-h7d1.onrender.com/admin/category/" +
-        categoryId,
+      "http://localhost:8080/admin/category/" + categoryId,
       {
         method: "DELETE",
         headers: {
@@ -30,12 +29,16 @@ const EditRemoveCategory = ({ catList }) => {
   };
   const hideEditform = () => {
     setEditState(false);
+    navigate("/admin-page");
   };
 
   const showEditForm = (cat) => {
     items = { ...cat };
     console.log(items);
     setEditState(true);
+    // setTimeout(() => {
+    //   navigate("/admin-page");
+    // }, 1000);
   };
   return (
     <Fragment>
@@ -59,32 +62,34 @@ const EditRemoveCategory = ({ catList }) => {
           purposes. !!!
         </p>
         <ul className={classes.list}>
-          {catList.reverse().map((cat, i, a) => {
-            return (
-              <li key={cat._id} className={classes.listChild}>
-                <img src={cat.categoryImage} alt={cat.categoryName} />
-                <p>{cat.categoryName}</p>
-                <div className={classes.actions}>
-                  <Link
-                    to={`/${cat._id}`}
-                    className={classes.button}
-                    onClick={showEditForm.bind(this, cat)}
-                  >
-                    Edit
-                  </Link>
+          {catList
+            .map((cat, i, a) => {
+              return (
+                <li key={cat._id} className={classes.listChild}>
+                  <img src={cat.categoryImage} alt={cat.categoryName} />
+                  <p>{cat.categoryName}</p>
+                  <div className={classes.actions}>
+                    <Link
+                      to={`/${cat._id}`}
+                      className={classes.button}
+                      onClick={showEditForm.bind(this, cat)}
+                    >
+                      Edit
+                    </Link>
 
-                  <Link
-                    to={"/admin-page"}
-                    onClick={deleteHandler.bind(this, cat._id, i, a)}
-                    className={classes.button}
-                    disabled={!deleteState}
-                  >
-                    Detete
-                  </Link>
-                </div>
-              </li>
-            );
-          })}
+                    <Link
+                      to={"/admin-page"}
+                      onClick={deleteHandler.bind(this, cat._id, i, a)}
+                      className={classes.button}
+                      disabled={!deleteState}
+                    >
+                      Detete
+                    </Link>
+                  </div>
+                </li>
+              );
+            })
+            .reverse()}
         </ul>
       </div>
     </Fragment>
