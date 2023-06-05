@@ -4,7 +4,7 @@ import BillDetails from "./BillingDetails";
 import ShippingAddressContainer from "./ShippingAddressContainer";
 import { useSelector } from "react-redux";
 import Card from "../UI/Card";
-const CheckoutDetails = () => {
+const CheckoutDetails = ({ addressData }) => {
   const cartItems = useSelector((state) => state.cart.items);
   return (
     <Card className={classes.mainCardContainer}>
@@ -25,7 +25,7 @@ const CheckoutDetails = () => {
               </div>
             </div> */}
             <ShippingDetails />
-            <ShippingAddressContainer />
+            <ShippingAddressContainer addressData={addressData} />
           </div>
 
           <div>

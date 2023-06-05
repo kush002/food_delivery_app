@@ -28,3 +28,8 @@
 .icon {
   cursor: pointer;
 }
+
+.icon:hover {
+  transform: scale(1.1);
+  transition: all 1s;
+}

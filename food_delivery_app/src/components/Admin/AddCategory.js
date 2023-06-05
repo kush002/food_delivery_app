@@ -12,7 +12,7 @@ const AddCategory = (props) => {
   const onSubmitHandler = () => {
     setTimeout(() => {
       props.onChange(isNormalLoad);
-    }, 1000);
+    }, 100);
   };
 
   return (

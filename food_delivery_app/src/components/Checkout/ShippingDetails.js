@@ -1,13 +1,23 @@
 import classes from "./ShippingDetails.module.css";
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, useNavigate, useNavigation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 const ShippingDetails = () => {
   const [showAddressDetails, setShowAddressDetails] = useState(false);
-
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+  // let isNormalLoad = l;?
+  const navigate = useNavigate();
   const showAddressHandler = () => {
     setShowAddressDetails(true);
+  };
+  const hideAddressHandler = () => {
+    setTimeout(() => {
+      setShowAddressDetails(false);
+      console.log(showAddressDetails);
+      navigate("/checkout");
+    }, 100);
   };
   return (
     <div className={classes.deliveryAddress} onClick={showAddressHandler}>
@@ -67,7 +77,9 @@ const ShippingDetails = () => {
             <input type="" id="phone" name="phone" defaultValue="" />
           </div>
           <div className={classes.button_wrapper}>
-            <button>Save</button>
+            <button disabled={isSubmitting} onClick={hideAddressHandler}>
+              {isSubmitting ? "Submitting..." : "Save"}
+            </button>
           </div>
         </Form>
       )}
