@@ -1,11 +1,40 @@
 import CheckoutDetails from "../components/Checkout/CheckoutDetails";
+import { defer, Await, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
 import { getToken } from "../util/user";
 import { json, redirect } from "react-router-dom";
 
 const CheckoutPage = () => {
-  return <CheckoutDetails />;
+  const { addressData } = useLoaderData();
+  return (
+    <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+      <Await resolve={addressData}>
+        {(loadedAddress) => <CheckoutDetails addressData={loadedAddress} />}
+      </Await>
+    </Suspense>
+  );
 };
 export default CheckoutPage;
+
+async function loadAddress() {
+  const response = await fetch("http://localhost:8080/user/address", {
+    headers: { Authorization: "Bearer " + getToken() },
+  });
+
+  if (!response.ok) {
+    throw json({ message: "could not fetch data" }, { status: 500 });
+  } else {
+    const data = await response.json();
+    console.log(data);
+    return data.addresses;
+  }
+}
+
+export async function loader() {
+  return defer({
+    addressData: loadAddress(),
+  });
+}
 
 export const action = async ({ request, params }) => {
   const data = await request.formData();
