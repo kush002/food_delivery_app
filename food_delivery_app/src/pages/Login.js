@@ -23,14 +23,11 @@ export const action = async ({ request, params }) => {
     password: data.get("loginPassword"),
   };
 
-  const response = await fetch(
-    "https://food-delivery-app-backend-h7d1.onrender.com/login",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userLoginData),
-    }
-  );
+  const response = await fetch("http://localhost:8080/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userLoginData),
+  });
 
   if (!response.ok) {
     throw json({ message: "Unable.fetch" }, { status: 500 });

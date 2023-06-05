@@ -1,8 +1,8 @@
-import classes from "./BillInfo.module.css";
+import classes from "./BillingDetails.module.css";
 import Card from "../UI/Card";
 import { Link } from "react-router-dom";
 
-const BillInfo = (props) => {
+const BillingDetails = (props) => {
   let price = 0;
   props.items.forEach((element) => {
     price += element.totalPrice;
@@ -46,7 +46,9 @@ const BillInfo = (props) => {
         </div>
         <Link to="/checkout">
           <div className={classes.order_button_wrapper}>
-            <button onClick={props.onChange}>Place Order</button>
+            <button type="submit" onClick={props.onChange}>
+              Place Order
+            </button>
           </div>
         </Link>
       </div>
@@ -54,4 +56,4 @@ const BillInfo = (props) => {
   );
 };
 
-export default BillInfo;
+export default BillingDetails;

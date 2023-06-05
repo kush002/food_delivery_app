@@ -7,14 +7,11 @@ export const fetchCartData = () => {
     const fetchData = async () => {
       const token = getToken();
 
-      const response = await fetch(
-        "https://food-delivery-app-backend-h7d1.onrender.com/user/cart",
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
-      );
+      const response = await fetch("http://localhost:8080/user/cart", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Could not fetch cart data!");
@@ -44,8 +41,7 @@ export const sendCartData = (cart) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       const response = await fetch(
-        "https://food-delivery-app-backend-h7d1.onrender.com/user/cart/" +
-          cart._id,
+        "http://localhost:8080/user/cart/" + cart._id,
         {
           method: "PUT",
           body: JSON.stringify({
