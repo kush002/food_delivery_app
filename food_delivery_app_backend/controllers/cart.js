@@ -55,10 +55,10 @@ exports.postCart = async (req, res, next) => {
 exports.getCart = async (req, res, next) => {
   try {
     const cart = await Cart.findOne({ user: req.userId });
-    console.log(cart);
+
     res.status(200).json({ message: "Providing cart data", cart: cart });
   } catch (error) {
-    console.log("lankesh");
+    console.log("error");
   }
   // console.log("djfjdhfkjsd:", req.params.cartId);
   // const cartId = req.params.cartId;

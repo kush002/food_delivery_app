@@ -12,6 +12,7 @@ const catRouter = require("./routes/categories");
 const itemsRouter = require("./routes/items");
 const cartRouter = require("./routes/cart");
 const userRouter = require("./routes/auth");
+const addressRouter = require("./routes/address");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -27,6 +28,7 @@ app.use("/admin", catRouter);
 app.use("/menu", itemsRouter);
 app.use("/user", cartRouter);
 app.use(userRouter);
+app.use("/user", addressRouter);
 
 app.use("/error", (error, req, res, next) => {
   console.log(error);
