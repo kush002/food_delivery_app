@@ -36,8 +36,12 @@ export const action = async ({ request, params }) => {
   const resData = await response.json();
   const token = resData.token;
   const userId = resData.userId;
+  const firstName = resData.firstName;
+  const lastName = resData.lastName;
   localStorage.setItem("token", token);
   localStorage.setItem("userId", userId);
+  localStorage.setItem("firstName", firstName);
+  localStorage.setItem("lastName", lastName);
 
   window.location.replace("/");
 

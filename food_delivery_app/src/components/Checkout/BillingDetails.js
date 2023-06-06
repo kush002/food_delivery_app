@@ -1,12 +1,36 @@
 import classes from "./BillingDetails.module.css";
 import Card from "../UI/Card";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
+import { getToken } from "../../util/user";
 
 const BillingDetails = (props) => {
   let price = 0;
   props.items.forEach((element) => {
     price += element.totalPrice;
   });
+
+  let amount = price - 50;
+
+  const paymentHandler = async () => {
+    const response = await fetch("http://localhost:8080/payment/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + getToken(),
+      },
+      body: JSON.stringify({
+        amount: amount,
+        currency: "INR",
+      }),
+    });
+
+    if (!response.ok) {
+      throw json({ message: "payment unsuccessful" }, { status: 500 });
+    }
+
+    const resData = await response.json();
+    console.log(resData.data);
+  };
   return (
     <div className={props.className}>
       <div className={classes.container}>
@@ -41,12 +65,12 @@ const BillingDetails = (props) => {
           </div>
 
           <div className={classes.button_wrapper}>
-            <button onClick={props.onChange}>Apply Coupon</button>
+            <button>Apply Coupon</button>
           </div>
         </div>
-        <Link to="/checkout">
+        <Link to="">
           <div className={classes.order_button_wrapper}>
-            <button type="submit" onClick={props.onChange}>
+            <button type="button" onClick={paymentHandler}>
               Place Order
             </button>
           </div>

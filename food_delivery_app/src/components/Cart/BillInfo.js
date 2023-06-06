@@ -41,14 +41,15 @@ const BillInfo = (props) => {
           </div>
 
           <div className={classes.button_wrapper}>
-            <button onClick={props.onChange}>Apply Coupon</button>
+            <button>Apply Coupon</button>
           </div>
         </div>
-        <Link to="/checkout">
-          <div className={classes.order_button_wrapper}>
-            <button onClick={props.onChange}>Place Order</button>
-          </div>
-        </Link>
+
+        <div className={classes.order_button_wrapper}>
+          <Link to="/checkout/address">
+            <button>Place Order</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

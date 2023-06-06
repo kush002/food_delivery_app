@@ -50,7 +50,7 @@ const HeaderCartButton = (props) => {
           onMouseLeave={hideOptionHandler}
         >
           <NavLink
-            to="/account"
+            to="/account/address"
             className={({ isActive }) =>
               isActive ? classes.active : classes.accountButtonNav
             }
@@ -59,7 +59,7 @@ const HeaderCartButton = (props) => {
           </NavLink>
           {toggle && (
             <div className={classes.dropDown}>
-              <Link to="/account">My Account</Link>
+              <Link to="/account/address">My Account</Link>
 
               <button className={classes.btn} onClick={onLogoutHandler}>
                 Logout

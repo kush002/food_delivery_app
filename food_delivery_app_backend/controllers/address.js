@@ -54,3 +54,24 @@ exports.deleteAddress = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.editAddress = async (req, res, next) => {
+  const address = await Address.findById(req.params.addressId, {});
+
+  if (!address) {
+    const error = new Error("addressId invalid for edit");
+    error.statusCode = 401;
+    throw error;
+  }
+
+  (address.firstName = req.body.firstName),
+    (address.lastName = req.body.lastName),
+    (address.address = req.body.address),
+    (address.city = req.body.city),
+    (address.country = req.body.country),
+    (address.state = req.body.state),
+    (address.postalCode = req.body.postalCode),
+    (address.phone = req.body.phone),
+    (address.user = req.userId),
+    await address.save();
+};
