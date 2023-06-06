@@ -8,7 +8,10 @@ import MenuPage, { loader as menuLoader } from "./pages/Menu";
 import RootLayout from "./pages/root";
 import CategoriesPage, { loader as categoryLoader } from "./pages/Categories";
 import OrdersPage from "./pages/Orders";
-import AccountPage from "./pages/Account";
+import AccountPage, {
+  loader as accountLoader,
+  action as accountAction,
+} from "./pages/Account";
 import Error404 from "./pages/404";
 import CategoryDetailsPage from "./pages/CategoryDetails";
 import AdminPage, {
@@ -46,7 +49,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: ":catId",
+        path: "/:catId",
         element: <AdminPage />,
         id: "adminroot",
         action: adminAction,
@@ -54,13 +57,19 @@ const router = createBrowserRouter([
         // children: [{ path: ":catId", element: <CategoryDetailsPage /> }],
       },
       {
-        path: "checkout",
+        path: "/checkout/:addressId",
+        id: "addressId",
         element: <CheckoutPage />,
         action: addressAction,
         loader: addressLoader,
       },
       { path: "orders", element: <OrdersPage /> },
-      { path: "account", element: <AccountPage /> },
+      {
+        path: "account/:addressId",
+        element: <AccountPage />,
+        loader: accountLoader,
+        action: accountAction,
+      },
       { path: "login", element: <LoginPage />, action: loginAction },
       { path: "signup", element: <SignUpPage />, action: signUpAction },
       { path: "logout", action: logoutAction },

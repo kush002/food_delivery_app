@@ -7,5 +7,7 @@ router.get("/address", isAuth, addressController.getAddress);
 
 router.post("/address", isAuth, addressController.postAddress);
 
-router.delete("/address/:addressId" , isAuth, addressController.deleteAddress)
+router.put("/address/:addressId", isAuth, addressController.editAddress);
+
+router.delete("/address/:addressId", isAuth, addressController.deleteAddress);
 module.exports = router;

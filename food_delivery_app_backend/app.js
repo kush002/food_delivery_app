@@ -13,6 +13,7 @@ const itemsRouter = require("./routes/items");
 const cartRouter = require("./routes/cart");
 const userRouter = require("./routes/auth");
 const addressRouter = require("./routes/address");
+const paymentRouter = require("./routes/payment");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -29,6 +30,7 @@ app.use("/menu", itemsRouter);
 app.use("/user", cartRouter);
 app.use(userRouter);
 app.use("/user", addressRouter);
+app.use("/payment", paymentRouter);
 
 app.use("/error", (error, req, res, next) => {
   console.log(error);

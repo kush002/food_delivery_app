@@ -18,6 +18,17 @@ export function getUserId() {
   return userId;
 }
 
+export function getName() {
+  const firstName = localStorage.getItem("firstName");
+  const lastName = localStorage.getItem("lastName");
+
+  if (!firstName && !lastName) {
+    return null;
+  }
+
+  return `${firstName} ${lastName}`;
+}
+
 export const tokenLoader = () => {
   const token = getToken();
   return token;

@@ -3,15 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Fragment, useState } from "react";
 import { getToken } from "../../util/user";
-import { json, redirect, useNavigate } from "react-router-dom";
+import { json, redirect, useNavigate, Link } from "react-router-dom";
 
-const ShippingAddressContainer = ({ addressData }) => {
+const ShippingAddressContainer = ({ addressData, onChange, account }) => {
   const [firstadd, setFirstadd] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const selectAddressHandler = (addressID) => {
     setSelectedId(addressID);
   };
   const navigate = useNavigate();
+
+  const editHandler = async (a) => {
+    console.log(a);
+    onChange(a);
+  };
   const deleteHandler = async (addressId) => {
     console.log(addressId);
     const response = await fetch(
@@ -24,7 +29,7 @@ const ShippingAddressContainer = ({ addressData }) => {
     if (!response.ok) {
       throw json({ message: "Address does not exist" }, { status: 500 });
     }
-    navigate("/checkout");
+    navigate(`/${account ? "account" : "checkout"}/addressId`);
   };
   return (
     <Fragment>
@@ -39,17 +44,25 @@ const ShippingAddressContainer = ({ addressData }) => {
             onClick={selectAddressHandler.bind(this, address._id)}
           >
             <div>
-              <p>Address: {address.address}</p>
-              <p>City: {address.city}</p>
-              <p>State: {address.state}</p>
-              <p>Country: {address.country}</p>
-              <p>Postal Code: {address.postalCode}</p>
-              <p>Phone: {address.phone}</p>
+              <p
+                style={{ fontWeight: "bold" }}
+              >{`${address.firstName} ${address.lastName}`}</p>
+              <p>{address.address},</p>
+              <p>
+                {address.city}, {address.state} ({address.postalCode}),
+              </p>
+              <p>{address.country}</p>
+
+              <p>Phone number: {address.phone}</p>
             </div>
             <div className={classes.icons}>
-              <div className={classes.icon}>
+              <Link
+                to={`/checkout/${address._id}`}
+                className={classes.icon}
+                onClick={editHandler.bind(this, address)}
+              >
                 <FontAwesomeIcon icon={faPenToSquare} size="lg" />
-              </div>
+              </Link>
               <div
                 className={classes.icon}
                 onClick={deleteHandler.bind(this, address._id)}

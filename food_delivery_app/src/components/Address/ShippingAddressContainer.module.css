@@ -26,6 +26,7 @@
 }
 
 .icon {
+  color: var(--mytext-color);
   cursor: pointer;
 }
 

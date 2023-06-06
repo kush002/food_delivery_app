@@ -50,8 +50,13 @@ export const action = async ({ request, params }) => {
     phone: data.get("phone"),
   };
 
-  const response = await fetch("http://localhost:8080/user/address", {
-    method: "POST",
+  // console.log(request.url, request.method, params.addressId);
+  const url =
+    request.method === "PUT"
+      ? "http://localhost:8080/user/address/" + params.addressId
+      : "http://localhost:8080/user/address";
+  const response = await fetch(url, {
+    method: request.method,
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + getToken(),
@@ -63,5 +68,5 @@ export const action = async ({ request, params }) => {
     throw json({ message: "Could not save data" }, { status: 500 });
   }
 
-  return redirect("/checkout");
+  return redirect("/checkout/addressId");
 };
