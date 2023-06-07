@@ -1,5 +1,5 @@
 import classes from "./BillingDetails.module.css";
-import Card from "../UI/Card";
+// import Card from "../UI/Card";
 import { Link, json } from "react-router-dom";
 import { getToken } from "../../util/user";
 
@@ -12,6 +12,14 @@ const BillingDetails = (props) => {
   let amount = price - 50;
 
   const paymentHandler = async () => {
+    const keyRes = await fetch("http://localhost:8080/payment/getKey", {
+      headers: { Authorization: "Bearer " + getToken() },
+    });
+
+    const reskey = await keyRes.json();
+
+    const key = reskey.key;
+
     const response = await fetch("http://localhost:8080/payment/checkout", {
       method: "POST",
       headers: {
@@ -29,7 +37,35 @@ const BillingDetails = (props) => {
     }
 
     const resData = await response.json();
-    console.log(resData.data);
+
+    const data = resData.data;
+    console.log(data);
+
+    const options = {
+      key,
+      amount: data.amount,
+      currency: "INR",
+      name: "Sunbloom Cafe",
+      description: "Test Transaction",
+      image:
+        "https://lh4.googleusercontent.com/-9TroxpcbMsI/AAAAAAAAAAI/AAAAAAAAAAA/GGdMky5-bl8/s44-p-k-no-ns-nd/photo.jpg",
+      order_id: data.id,
+      callback_url: "http://localhost:8080/payment/verify",
+      prefill: {
+        name: "Gaurav Kumar",
+        email: "gaurav.kumar@example.com",
+        contact: "9000090000",
+      },
+      // customer_id: data.cartId.toString(),
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#0062ff",
+      },
+    };
+    const razor = new window.Razorpay(options);
+    razor.open();
   };
   return (
     <div className={props.className}>

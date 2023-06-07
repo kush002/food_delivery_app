@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ShippingDetails from "./ShippingDetails";
-import BillDetails from "../Checkout/BillingDetails";
+// import BillDetails from "../Checkout/BillingDetails";
 import ShippingAddressContainer from "./ShippingAddressContainer";
-import { useSelector } from "react-redux";
-import Card from "../UI/Card";
+// import { useSelector } from "react-redux";
+// import Card from "../UI/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressCard } from "@fortawesome/free-solid-svg-icons";
 

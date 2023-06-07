@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 // import Modal from "../components/Modal/Modal";
+
 const HomePage = () => {
   return (
     <div>

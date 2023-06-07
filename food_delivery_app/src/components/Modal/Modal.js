@@ -11,7 +11,10 @@ export const ModalOverlay = (props) => {
     ? `${classes.modal} ${classes.className}`
     : classes.modal;
   return (
-    <div className={classes.modal} style={props.style}>
+    <div
+      className={props.class ? props.class : classes.modal}
+      style={props.style}
+    >
       <div className={classes.content}>{props.children}</div>
     </div>
   );
@@ -25,7 +28,9 @@ const Modal = (props) => {
         portalElement
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay style={props.style}>{props.children}</ModalOverlay>,
+        <ModalOverlay class={props.class} style={props.style}>
+          {props.children}
+        </ModalOverlay>,
         portalElement
       )}
     </Fragment>

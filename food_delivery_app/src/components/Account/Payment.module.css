@@ -1,6 +1,7 @@
 .payment {
   border: 1px solid var(--mytext-color);
   border-radius: 8px;
+  max-height: 25rem;
 }
 
 .payment h2 {
@@ -26,7 +27,7 @@
 }
 
 .icon {
-  transform: scale(4);
+  font-size: 150px;
 }
 .footer {
   padding-top: 1rem;

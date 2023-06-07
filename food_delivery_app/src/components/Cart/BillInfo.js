@@ -1,5 +1,5 @@
 import classes from "./BillInfo.module.css";
-import Card from "../UI/Card";
+// import Card from "../UI/Card";
 import { Link } from "react-router-dom";
 
 const BillInfo = (props) => {
