@@ -22,7 +22,7 @@ export async function action({ request, params }) {
     password: data.get("password"),
   };
 
-  const response = await fetch("http://localhost:8080/signup", {
+  const response = await fetch(`${process.env.REACT_APP_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

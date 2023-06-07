@@ -7,7 +7,7 @@ export const fetchCartData = () => {
     const fetchData = async () => {
       const token = getToken();
 
-      const response = await fetch("http://localhost:8080/user/cart", {
+      const response = await fetch(`${process.env.REACT_APP_URL}/user/cart`, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -41,7 +41,7 @@ export const sendCartData = (cart) => {
   return async (dispatch) => {
     const sendRequest = async () => {
       const response = await fetch(
-        "http://localhost:8080/user/cart/" + cart._id,
+        `${process.env.REACT_APP_URL}/user/cart/` + cart._id,
         {
           method: "PUT",
           body: JSON.stringify({

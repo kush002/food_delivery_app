@@ -15,7 +15,7 @@ const CategoriesList = ({ catList }) => {
         items: [...catitems],
       })
     );
-    console.log("jaggu", catitems);
+
     // dispatch(
     //   filterActions.addFilter({
     //

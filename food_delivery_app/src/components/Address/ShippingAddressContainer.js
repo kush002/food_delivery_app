@@ -20,7 +20,7 @@ const ShippingAddressContainer = ({ addressData, onChange, account }) => {
   const deleteHandler = async (addressId) => {
     console.log(addressId);
     const response = await fetch(
-      "http://localhost:8080/user/address/" + addressId,
+      `${process.env.REACT_APP_URL}/user/address/` + addressId,
       {
         method: "DELETE",
         headers: { Authorization: "Bearer " + getToken() },

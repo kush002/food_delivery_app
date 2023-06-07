@@ -12,7 +12,7 @@ const BillingDetails = (props) => {
   let amount = price - 50;
 
   const paymentHandler = async () => {
-    const keyRes = await fetch("http://localhost:8080/payment/getKey", {
+    const keyRes = await fetch(`${process.env.REACT_APP_URL}/payment/getKey`, {
       headers: { Authorization: "Bearer " + getToken() },
     });
 
@@ -20,17 +20,20 @@ const BillingDetails = (props) => {
 
     const key = reskey.key;
 
-    const response = await fetch("http://localhost:8080/payment/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + getToken(),
-      },
-      body: JSON.stringify({
-        amount: amount,
-        currency: "INR",
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_URL}/payment/checkout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + getToken(),
+        },
+        body: JSON.stringify({
+          amount: amount,
+          currency: "INR",
+        }),
+      }
+    );
 
     if (!response.ok) {
       throw json({ message: "payment unsuccessful" }, { status: 500 });
@@ -50,7 +53,7 @@ const BillingDetails = (props) => {
       image:
         "https://lh4.googleusercontent.com/-9TroxpcbMsI/AAAAAAAAAAI/AAAAAAAAAAA/GGdMky5-bl8/s44-p-k-no-ns-nd/photo.jpg",
       order_id: data.id,
-      callback_url: "http://localhost:8080/payment/verify",
+      callback_url: `${process.env.REACT_APP_URL}/payment/verify`,
       prefill: {
         name: "Gaurav Kumar",
         email: "gaurav.kumar@example.com",
