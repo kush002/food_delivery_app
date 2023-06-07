@@ -13,6 +13,10 @@ const cartSlice = createSlice({
     changed: false,
   },
   reducers: {
+    onPaymentSuccess(state, action) {
+      state.totalQuantity = action.payload.totalQuantity;
+      state.items = action.payload.items;
+    },
     onLogoutCart(state, action) {
       state.totalQuantity = action.payload.totalQuantity;
       state.items = action.payload.items;

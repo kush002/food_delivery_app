@@ -20,13 +20,14 @@ import AdminPage, {
 } from "./pages/Admin";
 import LoginPage, { action as loginAction } from "./pages/Login";
 import SignUpPage, { action as signUpAction } from "./pages/SignUp";
-import { sendCartData, fetchCartData, createCart } from "./store/cart-actions";
-import { getToken, getUserId, tokenLoader } from "./util/user";
+import { sendCartData, fetchCartData } from "./store/cart-actions";
+import { getUserId, tokenLoader } from "./util/user";
 import { action as logoutAction } from "./pages/Logout";
 import CheckoutPage, {
   action as addressAction,
   loader as addressLoader,
 } from "./pages/Checkout";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,7 @@ const router = createBrowserRouter([
       { path: "login", element: <LoginPage />, action: loginAction },
       { path: "signup", element: <SignUpPage />, action: signUpAction },
       { path: "logout", action: logoutAction },
+      { path: "paymentsuccessful", element: <PaymentSuccess /> },
     ],
   },
 ]);

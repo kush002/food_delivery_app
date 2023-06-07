@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Fragment, useState } from "react";
 import { getToken } from "../../util/user";
-import { json, redirect, useNavigate, Link } from "react-router-dom";
+import { json, useNavigate, Link } from "react-router-dom";
 
 const ShippingAddressContainer = ({ addressData, onChange, account }) => {
-  const [firstadd, setFirstadd] = useState(false);
+  // const [firstadd, setFirstadd] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const selectAddressHandler = (addressID) => {
     setSelectedId(addressID);
@@ -57,7 +57,7 @@ const ShippingAddressContainer = ({ addressData, onChange, account }) => {
             </div>
             <div className={classes.icons}>
               <Link
-                to={`/checkout/${address._id}`}
+                to={`/${account ? "account" : "checkout"}/${address._id}`}
                 className={classes.icon}
                 onClick={editHandler.bind(this, address)}
               >

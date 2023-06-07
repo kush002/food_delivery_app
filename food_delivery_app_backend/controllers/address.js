@@ -30,6 +30,7 @@ exports.postAddress = async (req, res, next) => {
       phone: req.body.phone,
       user: req.userId,
     });
+    console.log(req.userId);
     console.log("On the way");
     await address.save();
     res.status(200).json({ message: "Address addes successfully" });

@@ -1,7 +1,7 @@
 import { useLoaderData, defer, Await, json, redirect } from "react-router-dom";
 import { Suspense } from "react";
 import MyAccount from "../components/Account/MyAccount";
-import Card from "../components/UI/Card";
+// import Card from "../components/UI/Card";
 import { getToken } from "../util/user";
 const AccountPage = () => {
   const { addressData } = useLoaderData();

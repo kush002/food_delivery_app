@@ -25,6 +25,9 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/admin", catRouter);
 app.use("/menu", itemsRouter);
 app.use("/user", cartRouter);
