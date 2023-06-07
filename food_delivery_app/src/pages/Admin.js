@@ -9,7 +9,13 @@ const AdminPage = () => {
   return (
     <Card>
       <AdminActions />
-      <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+      <Suspense
+        fallback={
+          <p style={{ textAlign: "center", color: "var(--mytext-color)" }}>
+            Loading...
+          </p>
+        }
+      >
         <Await resolve={categories}>
           {(loadedCategories) => (
             <EditRemoveCategory catList={loadedCategories} />
@@ -23,7 +29,7 @@ const AdminPage = () => {
 export default AdminPage;
 
 async function loadCategories() {
-  const response = await fetch("http://localhost:8080/admin/category", {
+  const response = await fetch(`${process.env.REACT_APP_URL}/admin/category`, {
     headers: {
       Authorization: "Bearer " + getToken(),
     },
@@ -62,17 +68,20 @@ export async function action({ request, params }) {
   let response;
 
   if (request.method === "PUT") {
-    response = await fetch("http://localhost:8080/admin/category/" + catId, {
-      method: request.method,
-      headers: {
-        Authorization: "Bearer " + getToken(),
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(category),
-    });
+    response = await fetch(
+      `${process.env.REACT_APP_URL}/admin/category/` + catId,
+      {
+        method: request.method,
+        headers: {
+          Authorization: "Bearer " + getToken(),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(category),
+      }
+    );
   }
   if (category.categoryName !== null) {
-    response = await fetch("http://localhost:8080/admin/category/", {
+    response = await fetch(`${process.env.REACT_APP_URL}/admin/category/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(category),
@@ -80,7 +89,7 @@ export async function action({ request, params }) {
   }
 
   if (menuItem.itemName !== null) {
-    response = await fetch("http://localhost:8080/menu/items", {
+    response = await fetch(`${process.env.REACT_APP_URL}/menu/items`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(menuItem),

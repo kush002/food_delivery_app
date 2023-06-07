@@ -17,7 +17,7 @@ const CheckoutPage = () => {
 export default CheckoutPage;
 
 async function loadAddress() {
-  const response = await fetch("http://localhost:8080/user/address", {
+  const response = await fetch(`${process.env.REACT_APP_URL}/user/address`, {
     headers: { Authorization: "Bearer " + getToken() },
   });
 
@@ -53,8 +53,8 @@ export const action = async ({ request, params }) => {
   // console.log(request.url, request.method, params.addressId);
   const url =
     request.method === "PUT"
-      ? "http://localhost:8080/user/address/" + params.addressId
-      : "http://localhost:8080/user/address";
+      ? `${process.env.REACT_APP_URL}/user/address/` + params.addressId
+      : `${process.env.REACT_APP_URL}/user/address`;
   const response = await fetch(url, {
     method: request.method,
     headers: {
@@ -68,5 +68,5 @@ export const action = async ({ request, params }) => {
     throw json({ message: "Could not save data" }, { status: 500 });
   }
 
-  return redirect("/checkout/addressId");
+  return redirect("/checkout/:addressId");
 };

@@ -16,7 +16,7 @@ const EditRemoveCategory = ({ catList }) => {
       return;
     }
     const response = await fetch(
-      "http://localhost:8080/admin/category/" + categoryId,
+      `${process.env.REACT_APP_URL}/admin/category/` + categoryId,
       {
         method: "DELETE",
         headers: {

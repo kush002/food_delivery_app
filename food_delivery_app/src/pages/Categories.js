@@ -9,7 +9,13 @@ const CategoriesPage = () => {
 
   return (
     <Card>
-      <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+      <Suspense
+        fallback={
+          <p style={{ textAlign: "center", color: "var(--mytext-color)" }}>
+            Loading...
+          </p>
+        }
+      >
         <Await resolve={categories}>
           {(loadedCategories) => <CategoriesList catList={loadedCategories} />}
         </Await>
@@ -20,7 +26,7 @@ const CategoriesPage = () => {
 export default CategoriesPage;
 
 async function loadCategories() {
-  const response = await fetch("http://localhost:8080/admin/category", {
+  const response = await fetch(`${process.env.REACT_APP_URL}/admin/category`, {
     headers: {
       Authorization: "Bearer " + getToken(),
     },
