@@ -67,3 +67,10 @@
   border-color: #001d27;
   background-color: #fff;
 }
+
+.paymentLoading {
+  text-align: center;
+  color: var(--mytext-color);
+  padding-top: 1rem;
+  width: 50%;
+}

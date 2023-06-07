@@ -1,9 +1,13 @@
 import classes from "./BillingDetails.module.css";
 // import Card from "../UI/Card";
-import { Link, json } from "react-router-dom";
+import { Link, json, redirect } from "react-router-dom";
 import { getToken } from "../../util/user";
+import { useNavigation } from "react-router-dom";
+import { useState } from "react";
 
 const BillingDetails = (props) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   let price = 0;
   props.items.forEach((element) => {
     price += element.totalPrice;
@@ -12,6 +16,7 @@ const BillingDetails = (props) => {
   let amount = price - 50;
 
   const paymentHandler = async () => {
+    setIsSubmitting(true);
     const keyRes = await fetch(`${process.env.REACT_APP_URL}/payment/getKey`, {
       headers: { Authorization: "Bearer " + getToken() },
     });
@@ -69,6 +74,8 @@ const BillingDetails = (props) => {
     };
     const razor = new window.Razorpay(options);
     razor.open();
+
+    props.onChange(true);
   };
   return (
     <div className={props.className}>
@@ -109,8 +116,12 @@ const BillingDetails = (props) => {
         </div>
         <Link to="">
           <div className={classes.order_button_wrapper}>
-            <button type="button" onClick={paymentHandler}>
-              Place Order
+            <button
+              type="button"
+              disabled={isSubmitting}
+              onClick={paymentHandler}
+            >
+              {isSubmitting ? "Submitting Order..." : "Place Order"}
             </button>
           </div>
         </Link>
