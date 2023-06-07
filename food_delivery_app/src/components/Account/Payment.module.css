@@ -1,0 +1,36 @@
+.payment {
+  border: 1px solid var(--mytext-color);
+  border-radius: 8px;
+  max-height: 25rem;
+}
+
+.payment h2 {
+  padding-left: 1rem;
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: var(--mytext-color);
+  line-height: 1.75rem;
+  margin: 0;
+  width: 100%;
+  display: block;
+  margin-right: 2rem;
+}
+.icon_container {
+  margin-top: 2rem;
+  padding: 3rem 0;
+  width: 100%;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.icon {
+  font-size: 150px;
+}
+.footer {
+  padding-top: 1rem;
+  padding-left: 0;
+  text-align: center;
+}

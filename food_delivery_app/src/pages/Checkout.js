@@ -17,7 +17,7 @@ const CheckoutPage = () => {
 export default CheckoutPage;
 
 async function loadAddress() {
-  const response = await fetch("http://localhost:8080/user/address", {
+  const response = await fetch(`${process.env.REACT_APP_URL}/user/address`, {
     headers: { Authorization: "Bearer " + getToken() },
   });
 
@@ -50,8 +50,13 @@ export const action = async ({ request, params }) => {
     phone: data.get("phone"),
   };
 
-  const response = await fetch("http://localhost:8080/user/address", {
-    method: "POST",
+  // console.log(request.url, request.method, params.addressId);
+  const url =
+    request.method === "PUT"
+      ? `${process.env.REACT_APP_URL}/user/address/` + params.addressId
+      : `${process.env.REACT_APP_URL}/user/address`;
+  const response = await fetch(url, {
+    method: request.method,
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + getToken(),
@@ -63,5 +68,5 @@ export const action = async ({ request, params }) => {
     throw json({ message: "Could not save data" }, { status: 500 });
   }
 
-  return redirect("/checkout");
+  return redirect("/checkout/:addressId");
 };

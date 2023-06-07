@@ -21,7 +21,13 @@ const MenuPage = () => {
     <Card style={{ position: "relative" }}>
       <MenuSummary />
       <FilterContainer onClick={showFilterHandler} />
-      <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
+      <Suspense
+        fallback={
+          <p style={{ textAlign: "center", color: "var(--mytext-color)" }}>
+            Loading...
+          </p>
+        }
+      >
         <Await resolve={items}>
           {(loadedMenu) => {
             return (
@@ -45,7 +51,8 @@ const MenuPage = () => {
 export default MenuPage;
 
 async function loadMenu() {
-  const response = await fetch("http://localhost:8080/menu/items", {
+  console.log(process.env.REACT_APP_URL);
+  const response = await fetch(`${process.env.REACT_APP_URL}/menu/items`, {
     headers: {
       Authorization: "Bearer " + getToken(),
     },
