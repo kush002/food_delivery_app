@@ -67,7 +67,7 @@ exports.verify = async (req, res, next) => {
       // console.log(cart._id);
 
       res.redirect(
-        `http://localhost:3000/paymentsuccessful?reference=${razorpay_payment_id}`
+        `https://sunbloomcafe.netlify.app/paymentsuccessful?reference=${razorpay_payment_id}`
       );
     } else {
       const error = new Error("signature is not authentic");
