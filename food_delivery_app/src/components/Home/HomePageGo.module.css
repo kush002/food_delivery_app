@@ -57,3 +57,15 @@
   transform: none;
   /* transition: none; */
 }
+
+@media screen and (max-width: 721px) {
+  .hero_content h2 {
+    font-size: 23px;
+    transition: ease-out 0.2s;
+  }
+
+  .hero_content button {
+    /* padding-left: 1rem; */
+    width: 200px;
+  }
+}

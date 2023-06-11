@@ -66,13 +66,13 @@
   margin: auto 1rem;
 }
 
-.content h2 {
+.content h1 {
   font-size: 20px;
   color: #fbffdc;
 }
 
-.content p {
-  font-size: medium;
+.content h2 {
+  font-size: 18px;
   font-weight: 500;
   padding-top: 0.5rem;
   color: #fbffdc;
@@ -108,10 +108,10 @@
 }
 .pricing p {
   margin-top: 1rem;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
 }
-.price {
+.pricing h2 {
   width: 100%;
   /* height: 30%; */
   text-align: center;
@@ -130,12 +130,42 @@
 
 @media screen and (max-width: 1080px) {
   .menuItem_container {
-    height: 9rem;
+    height: 8rem;
   }
   .price,
-  .content h2 {
+  .content h1,
+  .pricing h2 {
     font-size: 18px;
     transition: all 1s;
+  }
+  .content h2 {
+    font-size: 15px;
+  }
+  .pricing {
+    padding-right: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .image {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+  }
+
+  .button {
+    min-width: 2.5rem;
+    height: 30px;
+    padding: 3px 6px;
+
+    text-align: center;
+  }
+
+  .qty_mng button {
+    min-width: 2rem;
+    padding: 0 0.5rem;
   }
 }
 
@@ -156,7 +186,7 @@
     padding: 0;
   }
 }
-
+/* 
 @media screen and (max-width: 721px) {
   .menuItem_container {
     height: 8rem;
@@ -175,7 +205,7 @@
 
 @media screen and (max-width: 520px) {
   .menu_container {
-    /* padding-right: 0; */
+
     margin-left: 1rem;
     margin-right: 1rem;
     width: auto;
@@ -203,4 +233,4 @@
   .image {
     padding: 1rem 0;
   }
-}
+} */

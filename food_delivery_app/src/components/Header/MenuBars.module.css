@@ -1,4 +1,5 @@
-.showIcon {
+.showIcon,
+.showCart {
   display: none;
 }
 
@@ -11,5 +12,14 @@
 @media screen and (max-width: 921px) {
   .showIcon {
     display: block;
+  }
+  .showCart {
+    display: inline-block;
+  }
+  .barCart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 11rem;
   }
 }
