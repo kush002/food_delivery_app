@@ -36,3 +36,9 @@
   margin-right: 1rem;
   margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 721px) {
+  .modal {
+    transform: scale(0.5);
+  }
+}
