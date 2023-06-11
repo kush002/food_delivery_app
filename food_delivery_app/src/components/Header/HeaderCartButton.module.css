@@ -1,4 +1,4 @@
-.buttonCart {
+.button {
   background-color: #fbffdc;
   color: #002e3f;
   margin: 0 0.5rem;
@@ -6,18 +6,17 @@
   border: 1px solid #fbffdc;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
 }
-.buttonCart a {
-  color: #002e3f;
+.button a {
+  color: #002e3f !important;
   display: flex;
   align-items: center;
-
-  padding: 0.3rem;
+  padding: 0.3rem !important;
 }
 
 .button a:hover,
 .button a.active {
-  color: #fbffdc;
-  background-color: #002e3f;
+  color: #fbffdc !important ;
+  background-color: #002e3f !important;
   border-radius: 10px;
 }
 
@@ -81,23 +80,23 @@
 .btn {
   border-radius: 2px;
   text-align: left;
-  color: #002e3f;
+  color: #002e3f !important;
   /* margin: 0.3rem 0; */
   width: 100%;
-  font-weight: bold;
+  font-weight: bold !important;
   margin: 0;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 1rem !important;
   border: none;
   /* border-bottom-radius: 8px; */
   /* border-top-right-radius: 8px; */
 }
 .dropDown a:first-of-type {
-  border-bottom: 2px solid #002e3f;
+  border-bottom: 2px solid #002e3f !important;
 }
 
 .dropDown a:hover,
 .btn:hover {
-  color: #fbffdc;
+  color: #fbffdc !important;
   background-color: #002e3f;
   transition: none;
   transform: none;
