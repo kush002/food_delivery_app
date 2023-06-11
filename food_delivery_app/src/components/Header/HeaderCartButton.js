@@ -31,7 +31,7 @@ const HeaderCartButton = (props) => {
 
   return (
     <Form action="/logout" method="post" className={props.className}>
-      <div className={classes.buttonCart}>
+      <div className={classes.button}>
         <NavLink
           className={({ isActive }) => (isActive ? classes.active : "")}
           to="/orders"
