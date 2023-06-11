@@ -47,7 +47,6 @@ const BillingDetails = (props) => {
     const resData = await response.json();
 
     const data = resData.data;
-    console.log(data);
 
     const options = {
       key,

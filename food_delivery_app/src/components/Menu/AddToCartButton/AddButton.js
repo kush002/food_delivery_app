@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import classes from "./AddButton.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
@@ -12,22 +12,25 @@ const AddButton = ({ item }) => {
   const token = getToken();
   const navigate = useNavigate();
   const { itemName, imageUrl, price, _id } = item;
-  const addToCartHandler = (event) => {
-    event.preventDefault();
-    if (token) {
-      dispatch(
-        cartActions.addToCart({
-          itemName,
-          imageUrl,
-          price,
-          _id,
-          quantity: inputRef.current.value > 1 ? +inputRef.current.value : 1,
-        })
-      );
-    } else {
-      navigate("/login");
-    }
-  };
+  const addToCartHandler = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (token) {
+        dispatch(
+          cartActions.addToCart({
+            itemName,
+            imageUrl,
+            price,
+            _id,
+            quantity: inputRef.current.value > 1 ? +inputRef.current.value : 1,
+          })
+        );
+      } else {
+        navigate("/login");
+      }
+    },
+    [dispatch, itemName, imageUrl, price, _id, token, navigate]
+  );
 
   return (
     <>

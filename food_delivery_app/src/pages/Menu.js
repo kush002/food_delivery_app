@@ -51,7 +51,6 @@ const MenuPage = () => {
 export default MenuPage;
 
 async function loadMenu() {
-  console.log(process.env.REACT_APP_URL);
   const response = await fetch(`${process.env.REACT_APP_URL}/menu/items`, {
     headers: {
       Authorization: "Bearer " + getToken(),

@@ -8,14 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Cart = ({ cart }) => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  // dispatch(cartActions.replaceCart({ ...cart }));
-  // }, [cart]);
-
   const cartItems = useSelector((state) => state.cart.items);
-  console.log("kumma:", cartItems);
-  // const cartItems = cart.items;
+
   return (
     <Card style={{ background: "rgba(0,0,0,0)", boxShadow: "none" }}>
       <div className={classes.orderInfo_container}>

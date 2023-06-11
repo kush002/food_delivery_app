@@ -25,7 +25,7 @@ async function loadAddress() {
     throw json({ message: "could not fetch data" }, { status: 500 });
   } else {
     const data = await response.json();
-    console.log(data);
+
     return data.addresses;
   }
 }

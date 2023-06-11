@@ -18,7 +18,6 @@ const ShippingAddressContainer = ({ addressData, onChange, account }) => {
     onChange(a);
   };
   const deleteHandler = async (addressId) => {
-    console.log(addressId);
     const response = await fetch(
       `${process.env.REACT_APP_URL}/user/address/` + addressId,
       {

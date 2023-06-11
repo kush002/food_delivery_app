@@ -10,7 +10,6 @@ const EditRemoveCategory = ({ catList }) => {
   const [editState, setEditState] = useState(false);
   const navigate = useNavigate();
   const deleteHandler = async (categoryId, index, a) => {
-    console.log(index, a);
     if (a.length <= 7) {
       setDeleteState(false);
       return;
@@ -34,7 +33,7 @@ const EditRemoveCategory = ({ catList }) => {
 
   const showEditForm = (cat) => {
     items = { ...cat };
-    console.log(items);
+
     setEditState(true);
     // setTimeout(() => {
     //   navigate("/admin-page");

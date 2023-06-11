@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { filterActions } from "../../store/filter-slice";
 import classes from "./FiltersCategories.module.css";
@@ -9,53 +9,67 @@ const FiltersCategories = ({ items, onClick }) => {
   const [show, setShow] = useState(false);
   const filter = useSelector((state) => state.filter);
   const dispatch = useDispatch();
-  const priceSortHandler = (event) => {
-    setShow(!show);
+  const priceSortHandler = useCallback(
+    (event) => {
+      setShow(!show);
 
-    dispatch(
-      filterActions.priceSort({
-        priceSorting: event.target.checked ? event.target.name : null,
-      })
-    );
-  };
+      dispatch(
+        filterActions.priceSort({
+          priceSorting: event.target.checked ? event.target.name : null,
+        })
+      );
+    },
+    [dispatch, show]
+  );
+
+  const categoryHandler = useCallback(
+    (event) => {
+      const catArray = items.filter(
+        (item) => item.itemCategoryName === event.target.name
+      );
+
+      dispatch(
+        filterActions.addFilter({
+          showSelectedCat: event.target.checked,
+          catName: event.target.name,
+          items: [...catArray],
+        })
+      );
+    },
+    [items, dispatch]
+  );
+
   const dietChangeHandler = () => {};
-  const categoryHandler = (event) => {
-    const catArray = items.filter(
-      (item) => item.itemCategoryName === event.target.name
-    );
-    console.log(catArray);
-    dispatch(
-      filterActions.addFilter({
-        showSelectedCat: event.target.checked,
-        catName: event.target.name,
-        items: [...catArray],
-      })
-    );
-  };
 
-  const allCategoryHandler = (event) => {
-    const checkedBoxId = event.target.id;
-    dispatch(
-      filterActions.retainCategory({
-        checkedIds: {
-          ...filter.checkedIds,
-          [checkedBoxId]: event.target.checked,
-        },
-      })
-    );
-  };
+  const allCategoryHandler = useCallback(
+    (event) => {
+      const checkedBoxId = event.target.id;
+      dispatch(
+        filterActions.retainCategory({
+          checkedIds: {
+            ...filter.checkedIds,
+            [checkedBoxId]: event.target.checked,
+          },
+        })
+      );
+    },
+    [dispatch, filter.checkedIds]
+  );
 
-  const removeFilterCategoryHandler = (event) => {
-    dispatch(
-      filterActions.retainCategory({
-        checkedIds: {},
-      })
-    );
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
-  };
+  const removeFilterCategoryHandler = useCallback(
+    (event) => {
+      dispatch(
+        filterActions.retainCategory({
+          checkedIds: {},
+        })
+      );
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+    },
+    [dispatch]
+  );
 
   const map = new Map();
   return (
@@ -148,4 +162,4 @@ const FiltersCategories = ({ items, onClick }) => {
     </Modal>
   );
 };
-export default FiltersCategories;
+export default React.memo(FiltersCategories);

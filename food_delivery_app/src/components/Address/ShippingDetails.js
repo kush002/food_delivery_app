@@ -6,7 +6,6 @@ const ShippingDetails = ({ onChange, data, method }) => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   // let isNormalLoad = l;?
-  console.log(data, method);
   return (
     <Form method={method} className={classes.addressContainer}>
       <div className={classes.inputContainer}>

@@ -7,9 +7,6 @@ export const Backdrop = (props) => {
 };
 
 export const ModalOverlay = (props) => {
-  const classReturn = props.className
-    ? `${classes.modal} ${classes.className}`
-    : classes.modal;
   return (
     <div
       className={props.class ? props.class : classes.modal}

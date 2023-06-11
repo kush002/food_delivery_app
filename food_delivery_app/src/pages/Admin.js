@@ -51,7 +51,7 @@ export async function loader() {
 export async function action({ request, params }) {
   const data = await request.formData();
   const catId = params.catId;
-  console.log(catId, params);
+
   const category = {
     categoryName: data.get("categoryName"),
     categoryImage: data.get("categoryImage"),

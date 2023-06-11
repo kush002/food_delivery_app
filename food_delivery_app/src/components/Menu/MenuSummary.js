@@ -1,5 +1,4 @@
 import classes from "./MenuSummary.module.css";
-import FilterContainer from "../Filter1/FilterButton";
 import { useSelector } from "react-redux";
 const MenuSummary = () => {
   const filter = useSelector((state) => state.filter);

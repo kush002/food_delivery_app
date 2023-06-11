@@ -8,7 +8,7 @@ const AddCategory = (props) => {
   const isSubmitting = navigation.state === "submitting";
   let isNormalLoad =
     navigation.state === "loading" && navigation.formData == null;
-  console.log(props.event, props.method, params);
+
   const onSubmitHandler = () => {
     setTimeout(() => {
       props.onChange(isNormalLoad);

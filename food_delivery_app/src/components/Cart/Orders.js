@@ -8,7 +8,6 @@ const Orders = (props) => {
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
-    console.log(item);
     dispatch(cartActions.addToCart({ ...item, quantity: 1 }));
   };
 

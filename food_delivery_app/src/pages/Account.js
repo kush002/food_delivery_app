@@ -1,7 +1,7 @@
 import { useLoaderData, defer, Await, json, redirect } from "react-router-dom";
 import { Suspense } from "react";
 import MyAccount from "../components/Account/MyAccount";
-// import Card from "../components/UI/Card";
+
 import { getToken } from "../util/user";
 const AccountPage = () => {
   const { addressData } = useLoaderData();
@@ -24,7 +24,7 @@ async function loadAddress() {
     throw json({ message: "could not fetch data" }, { status: 500 });
   } else {
     const data = await response.json();
-    console.log(data);
+
     return data.addresses;
   }
 }

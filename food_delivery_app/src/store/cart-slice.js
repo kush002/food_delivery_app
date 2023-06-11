@@ -2,8 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 // import { getCartId } from "../util/cart";
 import { v4 as uuidv4 } from "uuid";
 const initialCartId = uuidv4();
-console.log(initialCartId);
-console.log(initialCartId.toString());
 
 const cartSlice = createSlice({
   name: "cart",
