@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, redirect } from "react-router-dom";
 import Modal from "../../Modal/Modal";
 import classes from "./HemburgerMenu.module.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
@@ -24,6 +25,12 @@ const HemburgerMenu = ({ onClick }) => {
   return (
     <Modal class={classes.modal} onClick={onClick}>
       <div className={classes.menu}>
+        <FontAwesomeIcon
+          icon={faXmark}
+          size="lg"
+          style={{ color: "var(--buttonbg-color)" }}
+          onClick={onClick}
+        />
         <ul className={classes.list}>
           <li>
             <Link to="/">Home</Link>

@@ -12,12 +12,6 @@
   text-align: center;
 }
 
-@media screen and (min-width: 921px) {
-  .modal {
-    display: none;
-  }
-}
-
 .list {
   list-style: none;
   margin-top: 1rem;
@@ -43,6 +37,12 @@
   transition: all 1s;
 }
 
-li:last-child {
+.list li:last-child {
   border-top: 2px solid var(--buttonbg-color);
+}
+
+@media screen and (min-width: 921px) {
+  .modal {
+    display: none;
+  }
 }
