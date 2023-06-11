@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import classes from "./MenuList.module.css";
@@ -5,7 +6,7 @@ import AddButton from "./AddToCartButton/AddButton";
 
 const MenuList = (props) => {
   const filters = useSelector((state) => state.filter);
-
+  console.log("menu");
   let main;
   if (filters.filteredItem.length === 0) {
     main = [...props.items];
@@ -13,19 +14,7 @@ const MenuList = (props) => {
     main = [...filters.filteredItem];
   }
 
-  // const map = new Map();
-  console.log("main:", main);
-  // main = main.filter((item) => {
-  //   if (map.get(item._id)) {
-  //     return false;
-  //   }
-  //   map.set(item._id, item);
-  //   return true;
-  // });
-  console.log(filters.checkedIds);
-
   if (filters.showSelectedCat && filters.filteredItem.length === 0) {
-    console.log("true");
     main = props.items.filter((item) => filters.items.includes(item._id));
   }
 
@@ -35,7 +24,7 @@ const MenuList = (props) => {
   if (filters.priceSorting === "highToLow") {
     main.sort((a, b) => b.price - a.price);
   }
-  console.log("main:", filters, main);
+
   return (
     <Fragment>
       <div className={classes.menu_container}>

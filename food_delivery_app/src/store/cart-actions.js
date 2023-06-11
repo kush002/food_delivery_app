@@ -1,4 +1,5 @@
 // import { redirect } from "react-router-dom";
+import { json } from "react-router-dom";
 import { getToken, getUserId } from "../util/user";
 import { cartActions } from "./cart-slice";
 
@@ -14,7 +15,7 @@ export const fetchCartData = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Could not fetch cart data!");
+        throw json({ message: "Could not fetch cart data!" }, { status: 500 });
       }
 
       const resData = await response.json();
@@ -32,7 +33,7 @@ export const fetchCartData = () => {
         })
       );
     } catch (error) {
-      console.log(error);
+      console.log("No user found");
     }
   };
 };
@@ -56,14 +57,14 @@ export const sendCartData = (cart) => {
       );
 
       if (!response.ok) {
-        throw new Error("Sending cart data failed.");
+        throw json({ message: "Sending cart data failed." }, { status: 500 });
       }
     };
 
     try {
       await sendRequest();
     } catch (error) {
-      console.log(error);
+      console.log("Sending cart data failed.");
     }
   };
 };
