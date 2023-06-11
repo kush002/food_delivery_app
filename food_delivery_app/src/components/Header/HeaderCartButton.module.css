@@ -1,4 +1,4 @@
-.button {
+.buttonCart {
   background-color: #fbffdc;
   color: #002e3f;
   margin: 0 0.5rem;
@@ -6,7 +6,7 @@
   border: 1px solid #fbffdc;
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
 }
-.button a {
+.buttonCart a {
   color: #002e3f;
   display: flex;
   align-items: center;
