@@ -24,7 +24,7 @@ const HemburgerMenu = ({ onClick }) => {
   return (
     <Modal class={classes.modal} onClick={onClick}>
       <div className={classes.menu}>
-        <ul>
+        <ul className={classes.list}>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -44,7 +44,7 @@ const HemburgerMenu = ({ onClick }) => {
             <Link to="/account/address">My Account</Link>
           </li>
           <li>
-            <Link onClick={onLogoutHandler}>Home</Link>
+            <Link onClick={onLogoutHandler}>Logout</Link>
           </li>
         </ul>
       </div>

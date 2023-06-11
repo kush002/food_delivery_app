@@ -17,3 +17,32 @@
     display: none;
   }
 }
+
+.list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list li a {
+  font-style: none;
+  text-decoration: none;
+  color: var(--buttonbg-color);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 1rem;
+}
+
+.list a:hover {
+  transform: scale(1.1);
+  transition: all 1s;
+}
+
+li:last-child {
+  border-top: 2px solid var(--buttonbg-color);
+}
