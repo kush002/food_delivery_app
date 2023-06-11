@@ -105,3 +105,37 @@
     transform: translateX(0);
   }
 }
+
+@media screen and (max-width: 1080px) {
+  .container_1 {
+    min-height: 80vh;
+    margin-right: 1rem;
+    width: 50%;
+  }
+  .container_2 {
+    width: 40%;
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 721px) {
+  .orderInfo_container {
+    display: block;
+  }
+  .container_1 {
+    min-height: auto;
+    margin: auto;
+    width: 100%;
+  }
+
+  .card {
+    min-height: auto;
+    margin: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .container_2 {
+    width: 100%;
+    margin: 1rem auto;
+  }
+}

@@ -75,18 +75,6 @@
   transition: all 0.5s;
 }
 
-@media screen and (max-width: 921px) {
-  .nav_menu {
-    display: none;
-  }
-  a {
-    padding: 0;
-  }
-  .logo {
-    text-align: left;
-  }
-}
-
 @media screen and (max-width: 1080px) {
   .list {
     width: 45%;
@@ -98,9 +86,23 @@
   }
 }
 
+@media screen and (max-width: 921px) {
+  .nav_menu {
+    display: none;
+  }
+
+  .logo {
+    text-align: left;
+  }
+}
+
 @media screen and (max-width: 721px) {
   .logo {
     font-size: 23px;
     transition: ease-out 0.2s;
+  }
+
+  .logo a {
+    padding: 0;
   }
 }

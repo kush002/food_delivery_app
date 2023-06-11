@@ -9,12 +9,7 @@ const Header = () => {
   // const [logout, setLogout] = useState(false);
 
   const token = useRouteLoaderData("root");
-  const logoutHandler = () => {
-    // setLogout(!logout);
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    redirect("/login");
-  };
+
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
